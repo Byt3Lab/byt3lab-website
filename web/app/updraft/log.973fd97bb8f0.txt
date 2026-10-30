@@ -1,0 +1,192 @@
+0000.066 () Opened log file at time: Fri, 30 Oct 2026 19:49:44 +0000 on http://localhost:8080/wp
+0000.073 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.26.14 WP: 7.1.4 PHP: 8.4.27 (fpm-fcgi, Linux a1eef43e30d2 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64) MySQL: 13.0.2-MariaDB-ubu2604 (max packet size=16777216) WPLANG: en_US Server: nginx/1.31.8 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 5.7M | 8M) multisite: N openssl: OpenSSL 3.5.7 9 Jun 2026 mcrypt: N LANG:  WP Proxy: disabled ZipArchive::addFile: Y
+0000.080 () Free space on disk containing Updraft's temporary directory: 20877.2 MB
+0001.529 () Restore setup, now closing connection and starting restore over AJAX.
+0000.025 () Opened log file at time: Fri, 30 Oct 2026 19:49:48 +0000 on http://localhost:8080/wp
+0000.026 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.26.14 WP: 7.1.4 PHP: 8.4.27 (fpm-fcgi, Linux a1eef43e30d2 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64) MySQL: 13.0.2-MariaDB-ubu2604 (max packet size=16777216) WPLANG: en_US Server: nginx/1.31.8 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 3.4M | 8M) multisite: N openssl: OpenSSL 3.5.7 9 Jun 2026 mcrypt: N LANG:  WP Proxy: disabled ZipArchive::addFile: Y
+0000.027 () Free space on disk containing Updraft's temporary directory: 20877.2 MB
+0000.098 () Ensuring WP_Filesystem is setup for a restore
+0000.100 () WP_Filesystem is setup and ready for a restore
+0000.111 () Restore job started. Entities to restore: plugins, themes, uploads, others, db. Restore options: {"updraft_restorer_replacesiteurl":"1","include_unspecified_tables":false,"tables_to_restore":["wp_options","wp_users","wp_usermeta","wp_commentmeta","wp_comments","wp_links","wp_postmeta","wp_posts","wp_term_relationships","wp_term_taxonomy","wp_termmeta","wp_terms","wp_e_events","wp_eb_form_settings","wp_trp_gettext_fr_fr","wp_trp_gettext_original_meta","wp_trp_gettext_original_strings"],"tables_to_skip":[],"updraft_encryptionphrase":"","updraft_restorer_wpcore_includewpconfig":false,"updraft_incremental_restore_point":-1}
+0000.166 () Will not delete any archives after unpacking them, because there was no cloud storage for this backup
+0000.177 () Entity: db
+0000.178 () restore_backup(backup_file=backup_2026-10-18-0655_byt3lab_84f6916ff254-db.gz, type=db, info=a:0:{}, last_one=)
+0000.182 () Unpacking backup... (backup_2026-10-18-0655_byt3lab_84f6916ff254-db.gz, 0.4 Mb)
+0000.240 () Database successfully unpacked
+0000.243 () Restoring the database (on a large site this can take a long time - if it times out (which can happen if your web hosting company has configured your hosting to limit resources) then you should use a different method, such as phpMyAdmin)...
+0000.265 () Using direct MySQL access; value of use_mysqli is: 1
+0000.267 () SQL compatibility mode is now: ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+0000.358 () Tried to raise max_allowed_packet from 16 MB to 32 MB, but failed (Access denied; you need (at least one of) the SUPER privilege(s) for this operation, b:0;)
+0000.359 () Max packet size: 16 MB
+0000.359 () Entering maintenance mode
+0000.360 () Enabling Maintenance mode&#8230;
+0000.410 () Backup of: https://byt3lab.com
+0000.456 () Content URL: https://byt3lab.com/wp-content
+0000.457 () Uploads URL: https://byt3lab.com/wp-content/uploads
+0000.458 () Old table prefix: wp_
+0000.459 () Old ABSPATH: /home/www/byt3lab_website/
+0000.460 () UpdraftPlus plugin slug: updraftplus/updraftplus.php
+0000.464 () Site information: multisite=0
+0000.466 () Site information: sql_mode=
+0000.469 () Skipped execution of SQL statement (unwanted or internally handled type=18): /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+0000.470 () New table prefix: ki_
+0000.491 () Processing table (InnoDB): wp_options - will restore as: ki_options
+0001.043 () Atomic restore: dropping original table (wp_options)
+0001.056 () Atomic restore: renaming new table (ki_options) to final table name (wp_options)
+0001.070 () Restoring prior UD configuration (table: wp_options; keys: 103)
+0001.985 () Search and replacing table: wp_options: rows: 347
+0002.269 () Processing table (InnoDB): wp_users - will restore as: ki_users
+0002.334 () Atomic restore: dropping original table (wp_users)
+0002.351 () Atomic restore: renaming new table (ki_users) to final table name (wp_users)
+0002.371 () Search and replacing table: wp_users: rows: 2
+0002.375 () Processing table (InnoDB): wp_usermeta - will restore as: ki_usermeta
+0002.435 () Atomic restore: dropping original table (wp_usermeta)
+0002.454 () Atomic restore: renaming new table (ki_usermeta) to final table name (wp_usermeta)
+0002.474 () Search and replacing table: wp_usermeta: rows: 45
+0002.478 () Processing table (InnoDB): wp_commentmeta - will restore as: ki_commentmeta
+0002.527 () Atomic restore: dropping original table (wp_commentmeta)
+0002.545 () Atomic restore: renaming new table (ki_commentmeta) to final table name (wp_commentmeta)
+0002.565 () Search and replacing table: wp_commentmeta: rows: 0
+0002.566 () Processing table (InnoDB): wp_comments - will restore as: ki_comments
+0002.814 () Atomic restore: dropping original table (wp_comments)
+0002.833 () Atomic restore: renaming new table (ki_comments) to final table name (wp_comments)
+0002.855 () Search and replacing table: wp_comments: rows: 433
+0002.891 () Processing table (InnoDB): wp_links - will restore as: ki_links
+0002.932 () Atomic restore: dropping original table (wp_links)
+0002.947 () Atomic restore: renaming new table (ki_links) to final table name (wp_links)
+0002.965 () Search and replacing table: wp_links: rows: 0
+0002.966 () Processing table (InnoDB): wp_postmeta - will restore as: ki_postmeta
+0003.055 () Atomic restore: dropping original table (wp_postmeta)
+0003.070 () Atomic restore: renaming new table (ki_postmeta) to final table name (wp_postmeta)
+0003.088 () Search and replacing table: wp_postmeta: rows: 14
+0003.111 () Processing table (InnoDB): wp_posts - will restore as: ki_posts
+0003.815 () Atomic restore: dropping original table (wp_posts)
+0003.831 () Atomic restore: renaming new table (ki_posts) to final table name (wp_posts)
+0003.850 () Skipping search/replace on GUID column in posts table
+0003.853 () Search and replacing table: wp_posts: rows: 145
+0003.990 () Processing table (InnoDB): wp_term_relationships - will restore as: ki_term_relationships
+0004.040 () Atomic restore: dropping original table (wp_term_relationships)
+0004.059 () Atomic restore: renaming new table (ki_term_relationships) to final table name (wp_term_relationships)
+0004.076 () Skipping this table: data in this table (wp_term_relationships) should not be search/replaced
+0004.079 () Processing table (InnoDB): wp_term_taxonomy - will restore as: ki_term_taxonomy
+0004.132 () Atomic restore: dropping original table (wp_term_taxonomy)
+0004.147 () Atomic restore: renaming new table (ki_term_taxonomy) to final table name (wp_term_taxonomy)
+0004.170 () Search and replacing table: wp_term_taxonomy: rows: 10
+0004.171 () Processing table (InnoDB): wp_termmeta - will restore as: ki_termmeta
+0004.217 () Atomic restore: dropping original table (wp_termmeta)
+0004.247 () Atomic restore: renaming new table (ki_termmeta) to final table name (wp_termmeta)
+0004.267 () Search and replacing table: wp_termmeta: rows: 0
+0004.268 () Processing table (InnoDB): wp_terms - will restore as: ki_terms
+0004.323 () Atomic restore: dropping original table (wp_terms)
+0004.341 () Atomic restore: renaming new table (ki_terms) to final table name (wp_terms)
+0004.364 () Search and replacing table: wp_terms: rows: 10
+0004.366 () Processing table (InnoDB): wp_e_events - will restore as: ki_e_events
+0004.404 () Atomic restore: dropping original table (wp_e_events)
+0004.415 () Atomic restore: renaming new table (ki_e_events) to final table name (wp_e_events)
+0004.433 () Search and replacing table: wp_e_events: rows: 0
+0004.433 () Processing table (InnoDB): wp_eb_form_settings - will restore as: ki_eb_form_settings
+0004.478 () Atomic restore: dropping original table (wp_eb_form_settings)
+0004.488 () Atomic restore: renaming new table (ki_eb_form_settings) to final table name (wp_eb_form_settings)
+0004.512 () Search and replacing table: wp_eb_form_settings: rows: 0
+0004.513 () Processing table (InnoDB): wp_trp_gettext_fr_fr - will restore as: ki_trp_gettext_fr_fr
+0004.591 () Atomic restore: dropping original table (wp_trp_gettext_fr_fr)
+0004.605 () Atomic restore: renaming new table (ki_trp_gettext_fr_fr) to final table name (wp_trp_gettext_fr_fr)
+0004.624 () Search and replacing table: wp_trp_gettext_fr_fr: rows: 0
+0004.627 () Processing table (InnoDB): wp_trp_gettext_original_meta - will restore as: ki_trp_gettext_original_meta
+0004.672 () Database queries processed: 50 in 4.40 seconds
+0004.674 () Atomic restore: dropping original table (wp_trp_gettext_original_meta)
+0004.685 () Atomic restore: renaming new table (ki_trp_gettext_original_meta) to final table name (wp_trp_gettext_original_meta)
+0004.706 () Search and replacing table: wp_trp_gettext_original_meta: rows: 0
+0004.706 () Processing table (InnoDB): wp_trp_gettext_original_strings - will restore as: ki_trp_gettext_original_strings
+0004.733 () Skipped execution of SQL statement (unwanted or internally handled type=18): /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+0004.747 () Unlocking database and leaving maintenance mode
+0004.748 () Disabling Maintenance mode&#8230;
+0004.751 () Atomic restore: dropping original table (wp_trp_gettext_original_strings)
+0004.762 () Atomic restore: renaming new table (ki_trp_gettext_original_strings) to final table name (wp_trp_gettext_original_strings)
+0004.778 () Search and replacing table: wp_trp_gettext_original_strings: rows: 0
+0004.778 () Finished: lines processed: 55 in 4.51 seconds
+0004.784 () Cleaning up rubbish...
+0004.788 () Begin search and replace (updraftplus_restored_db)
+0004.788 () [Database-replace-site-url] Database: search and replace site URL
+0004.789 () Warning: the database's site URL (http://localhost:8080) is different to what we expected (https://byt3lab.com)
+0004.794 () Database search and replace: replace https://byt3lab.com/wp-content in backup dump with http://localhost:8080/app
+0004.795 () Database search and replace: replace https://byt3lab.com in backup dump with http://localhost:8080
+0004.797 () Database search and replace: replace http://www.byt3lab.com/wp-content in backup dump with http://localhost:8080/app
+0004.798 () Database search and replace: replace http://byt3lab.com/wp-content in backup dump with http://localhost:8080/app
+0004.799 () Database search and replace: replace https://www.byt3lab.com/wp-content in backup dump with http://localhost:8080/app
+0004.800 () Database search and replace: replace http://www.byt3lab.com in backup dump with http://localhost:8080
+0004.801 () Database search and replace: replace http://byt3lab.com in backup dump with http://localhost:8080
+0004.801 () Database search and replace: replace https://www.byt3lab.com in backup dump with http://localhost:8080
+0004.802 () Database search and replace: replace /home/www/byt3lab_website in backup dump with /var/www/html/web/wp
+0004.805 () Search and replacing table: wp_commentmeta: already done
+0004.806 () Search and replacing table: wp_comments: already done
+0004.813 () Search and replacing table: wp_e_events: already done
+0004.814 () Search and replacing table: wp_eb_form_settings: already done
+0004.815 () Search and replacing table: wp_links: already done
+0004.816 () Search and replacing table: wp_options: already done
+0004.817 () Search and replacing table: wp_postmeta: already done
+0004.818 () Search and replacing table: wp_posts: already done
+0004.819 () Search and replacing table: wp_term_relationships: already done
+0004.820 () Search and replacing table: wp_term_taxonomy: already done
+0004.821 () Search and replacing table: wp_termmeta: already done
+0004.822 () Search and replacing table: wp_terms: already done
+0004.823 () Search and replacing table: wp_trp_gettext_fr_fr: already done
+0004.827 () Search and replacing table: wp_trp_gettext_original_meta: already done
+0004.828 () Search and replacing table: wp_trp_gettext_original_strings: already done
+0004.830 () Search and replacing table: wp_usermeta: already done
+0004.831 () Search and replacing table: wp_users: already done
+0004.857 () Entity: plugins
+0004.857 () restore_backup(backup_file=backup_2026-10-18-0655_byt3lab_84f6916ff254-plugins.zip, type=plugins, info=a:3:{s:4:"path";s:29:"/var/www/html/web/app/plugins";s:11:"description";s:7:"Plugins";s:20:"singular_description";s:6:"Plugin";}, last_one=)
+0004.862 () Unpacking backup... (backup_2026-10-18-0655_byt3lab_84f6916ff254-plugins.zip, 11.1 MB)
+0004.948 () Unzipping backup_2026-10-18-0655_byt3lab_84f6916ff254-plugins.zip to /var/www/html/web/app/upgrade/7fc9a620/ using UpdraftPlus_ZipArchive, starting index 0
+0037.694 () Unzip progress: 923 out of 3411 files (2.7 MB, plugins/updraftplus/vendor/guzzle/guzzle/src/Guzzle/Service/Command/RequestSerializerInterface.php)
+0053.850 () Unzip progress: 1138 out of 3411 files (3.6 MB, plugins/updraftplus/vendor/eher/oauth/src/Eher/OAuth/Request.php)
+0069.856 () Unzip progress: 1355 out of 3411 files (5.3 MB, plugins/contact-form-7/includes/swv/swv.php)
+0085.690 () Unzip progress: 1706 out of 3411 files (9.1 MB, plugins/mailchimp-for-wp/integrations/contact-form-7/class-contact-form-7.php)
+0101.746 () Unzip progress: 2080 out of 3411 files (15.5 MB, plugins/updraftplus/images/aws_logo.png)
+0117.705 () Unzip progress: 2494 out of 3411 files (29.6 MB, plugins/updraftplus/vendor/rackspace/php-opencloud/lib/OpenCloud/Common/Exceptions/UserUpdateError.php)
+0133.690 () Unzip progress: 2900 out of 3411 files (30.5 MB, plugins/gtranslate/flags/48/tr.png)
+0149.716 () Unzip progress: 3321 out of 3411 files (30.9 MB, plugins/gtranslate/flags/24/sk.png)
+0153.088 () Unzip progress: 3411 out of 3411 files (31.2 MB, plugins/gtranslate/flags/svg/eu.svg)
+0153.106 () Moving old data: filesystem method / updraft_dir is potentially possible
+0153.111 () Moving old data: can potentially use wp_filesystem method / -old
+0153.111 () Moving old data out of the way...
+0157.144 () Top-level entities being moved: .gitkeep, updraftplus
+0157.166 () Moving unpacked backup into place...
+0164.054 () Top-level entities being moved: byt3lab_wordpress_theme_builder, contact-form-7, creame-whatsapp-me, gtranslate, index.php, mailchimp-for-wp, maintenance, updraftplus
+0164.162 () Cleaning up rubbish...
+0164.181 () Entity: themes
+0164.181 () restore_backup(backup_file=backup_2026-10-18-0655_byt3lab_84f6916ff254-themes.zip, type=themes, info=a:3:{s:4:"path";s:28:"/var/www/html/web/app/themes";s:11:"description";s:6:"Themes";s:20:"singular_description";s:5:"Theme";}, last_one=)
+0164.185 () Unpacking backup... (backup_2026-10-18-0655_byt3lab_84f6916ff254-themes.zip, 30.7 MB)
+0164.194 () Unzipping backup_2026-10-18-0655_byt3lab_84f6916ff254-themes.zip to /var/www/html/web/app/upgrade/d7c9050d/ using UpdraftPlus_ZipArchive, starting index 0
+0192.717 () Unzip progress: 937 out of 3575 files (526 KB, themes/blocksy/static/sass/backend/options/ct-inner-layers.scss)
+0208.709 () Unzip progress: 1388 out of 3575 files (1.7 MB, themes/blocksy/static/js/customizer/panels-builder/placements/Sortable.js)
+0224.706 () Unzip progress: 1811 out of 3575 files (16.7 MB, themes/byt3lab_wordpress_theme/.git/objects/9c/fa27303ff695ce9dc994b94bb65cd445854010)
+0240.706 () Unzip progress: 2197 out of 3575 files (19.3 MB, themes/blocksy/inc/components/media/full.php)
+0256.692 () Unzip progress: 2585 out of 3575 files (26.3 MB, themes/phlox/auxin/images/other/custom.svg)
+0272.704 () Unzip progress: 3037 out of 3575 files (31.9 MB, themes/phlox/auxin/auxin-include/classes/class-auxin-admin-assets.php)
+0288.754 () Unzip progress: 3482 out of 3575 files (46.7 MB, themes/phlox/templates/theme-parts/entry/post.php)
+0292.815 () Unzip progress: 3575 out of 3575 files (51.6 MB, themes/phlox/css/fonts/fontello/fontello-custom.eot)
+0292.826 () Moving old data: filesystem method / updraft_dir is potentially possible
+0292.830 () Moving old data: can potentially use wp_filesystem method / -old
+0292.831 () Moving old data out of the way...
+0293.289 () Top-level entities being moved: .gitkeep, twentytwentyfive
+0293.303 () Moving unpacked backup into place...
+0300.456 () Top-level entities being moved: blocksy, byt3lab_wordpress_theme, index.php, phlox, twentytwentyfive, twentytwentyfour, twentytwentythree
+0300.593 () Cleaning up rubbish...
+0300.612 () Entity: uploads
+0300.612 () restore_backup(backup_file=backup_2026-10-18-0655_byt3lab_84f6916ff254-uploads.zip, type=uploads, info=a:2:{s:4:"path";s:29:"/var/www/html/web/app/uploads";s:11:"description";s:7:"Uploads";}, last_one=)
+0300.613 () Unpacking backup... (backup_2026-10-18-0655_byt3lab_84f6916ff254-uploads.zip, 20.7 MB)
+0300.632 () Unzipping backup_2026-10-18-0655_byt3lab_84f6916ff254-uploads.zip to /var/www/html/web/app/ using UpdraftPlus_ZipArchive, starting index 0
+0302.923 () Unzip progress: 119 out of 119 files (21 MB, uploads/fonts/Beyonders-Italic.ttf)
+0302.929 () Scan and delete old files that are not presented in the restored backup...
+0303.092 () 2 files deleted.
+0303.097 () Entity: others
+0303.098 () restore_backup(backup_file=backup_2026-10-18-0655_byt3lab_84f6916ff254-others.zip, type=others, info=a:2:{s:4:"path";s:21:"/var/www/html/web/app";s:11:"description";s:6:"Others";}, last_one=1)
+0303.100 () Unpacking backup... (backup_2026-10-18-0655_byt3lab_84f6916ff254-others.zip, 1.8 MB)
+0303.110 () Unzipping backup_2026-10-18-0655_byt3lab_84f6916ff254-others.zip to /var/www/html/web/app/upgrade/0b7d950f/ using UpdraftPlus_ZipArchive, starting index 0
+0309.011 () Unzip progress: 198 out of 198 files (6.3 MB, index.php)
+0309.040 () Cleaning up rubbish...
+0309.448 () Elementor's CSS directory exists, and will be emptied (so that it will be automatically regenerated)
+0309.476 () Restore successful!
+0309.478 () Restore successful

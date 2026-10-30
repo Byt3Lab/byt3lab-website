@@ -1,54 +1,76 @@
-<p align="center">
-  <a href="https://roots.io/bedrock/">
-    <img alt="Bedrock" src="https://cdn.roots.io/app/uploads/logo-bedrock.svg" height="100">
-  </a>
-</p>
+````markdown
+# Configuration de base du Site WordPress (Bedrock + Docker)
 
-<p align="center">
-  <a href="https://packagist.org/packages/roots/bedrock"><img alt="Packagist Installs" src="https://img.shields.io/packagist/dt/roots/bedrock?label=projects%20created&colorB=2b3072&colorA=525ddc&style=flat-square"></a>
-  <a href="https://packagist.org/packages/roots/wordpress"><img alt="roots/wordpress Packagist Downloads" src="https://img.shields.io/packagist/dt/roots/wordpress?label=roots%2Fwordpress%20downloads&logo=roots&logoColor=white&colorB=2b3072&colorA=525ddc&style=flat-square"></a>
-  <img src="https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/roots/bedrock/master/composer.json&label=wordpress&logo=roots&logoColor=white&query=$.require[%22roots/wordpress%22]&colorB=2b3072&colorA=525ddc&style=flat-square">
-  <a href="https://github.com/roots/bedrock/actions/workflows/ci.yml"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/bedrock/ci.yml?branch=master&logo=github&label=CI&style=flat-square"></a>
-  <a href="https://twitter.com/rootswp"><img alt="Follow Roots" src="https://img.shields.io/badge/follow%20@rootswp-1da1f2?logo=twitter&logoColor=ffffff&message=&style=flat-square"></a>
-  <a href="https://github.com/sponsors/roots"><img src="https://img.shields.io/badge/sponsor%20roots-525ddc?logo=github&style=flat-square&logoColor=ffffff&message=" alt="Sponsor Roots"></a>
-</p>
+Site WordPress basé sur [Bedrock](https://roots.io/bedrock/) avec environnement local Docker.
 
-<p align="center">WordPress boilerplate with Composer, easier configuration, and an improved folder structure</p>
+## Prérequis
 
-<p align="center">
-  <a href="https://roots.io/bedrock/">Website</a> &nbsp;&nbsp; <a href="https://roots.io/bedrock/docs/installation/">Documentation</a> &nbsp;&nbsp; <a href="https://github.com/roots/bedrock/releases">Releases</a> &nbsp;&nbsp; <a href="https://discourse.roots.io/">Community</a>
-</p>
+- Docker & Docker Compose
+- PHP 8.4+ (uniquement pour Composer)
+- Composer
 
-## Support us
+## Démarrage local
 
-Roots is an independent open source org, supported only by developers like you. Your sponsorship funds [WP Packages](https://wp-packages.org/) and the entire Roots ecosystem, and keeps them independent. Support us by purchasing [Radicle](https://roots.io/radicle/) or [sponsoring us on GitHub](https://github.com/sponsors/roots) — sponsors get access to our private Discord.
+1. Copier le fichier d'environnement :
+   ```bash
+   cp .env.example .env
+   ```
+````
 
-### Sponsors
+2. Générer les clés de sécurité sur https://roots.io/salts.html et les coller dans `.env`.
 
-<a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" height="90"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="Itineris" height="90"></a> <a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" height="90"></a> <a href="https://ploi.io/"><img src="https://cdn.roots.io/app/uploads/ploi.svg" alt="Ploi" height="90"></a>
+3. Lancer les conteneurs :
 
-## Overview
+   ```bash
+   docker compose up -d --build
+   ```
 
-Bedrock is a WordPress boilerplate for developers that want to manage their projects with Git and Composer. Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](http://12factor.net/) methodology, including the [WordPress specific version](https://roots.io/twelve-factor-wordpress/).
+4. Attendre que MariaDB soit prête :
 
-- Better folder structure
-- Dependency management with [Composer](https://getcomposer.org)
-  - [`roots/wordpress`](https://wp-packages.org/wordpress-core) package for WordPress core
-  - [WP Packages](https://wp-packages.org/) repository for WordPress plugins and themes
-- Easy WordPress configuration with environment specific files
-- Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
-- Autoloader for mu-plugins (use regular plugins as mu-plugins)
+   ```bash
+   docker compose logs db --tail=5 | grep "ready for connections"
+   ```
 
-## Getting Started
+5. Installer WordPress :
 
-See the [Bedrock installation documentation](https://roots.io/bedrock/docs/installation/).
+   ```bash
+   docker compose exec php vendor/bin/wp core install \
+     --url="http://localhost:8080" \
+     --title="Mon Site" \
+     --admin_user="admin" \
+     --admin_password="admin" \
+     --admin_email="admin@example.com" \
+     --allow-root
+   ```
 
-## Community
+6. Accéder au site : http://localhost:8080
+   Admin : http://localhost:8080/wp/wp-admin/
 
-Keep track of development and community news.
+## Structure
 
-- Join us on Discord by [sponsoring us on GitHub](https://github.com/sponsors/roots)
-- Join us on [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Follow the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
+- `config/` — Configuration Bedrock (application.php, environnements)
+- `web/app/themes/` — Thèmes custom (versionnés)
+- `web/app/plugins/` — Plugins custom (versionnés)
+- `web/wp/` — Core WordPress (géré par Composer, non versionné)
+- `docker/` — Configurations Nginx et PHP
+
+## Déploiement
+
+Voir `.github/workflows/deploy.yml`. Les secrets nécessaires sont :
+
+- `SSH_HOST` — IP ou domaine du VPS
+- `SSH_USER` — Utilisateur de déploiement
+- `SSH_PRIVATE_KEY` — Clé SSH privée
+
+## Commandes utiles
+
+```bash
+# Voir les logs
+docker compose logs -f php
+
+# Accéder à WP-CLI
+docker compose exec php vendor/bin/wp --allow-root <commande>
+
+# Accéder à MariaDB
+docker compose exec db mariadb -uwordpress -pwordpress wordpress
+```
