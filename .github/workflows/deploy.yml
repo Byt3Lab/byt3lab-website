@@ -1,0 +1,106 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Permet de lancer manuellement depuis l'onglet Actions
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false # Ne jamais annuler un déploiement en cours
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Configuration SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Déploiement
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          RELEASE_ID: ${{ github.sha }}
+        run: |
+          set -e
+
+          BASE_DIR=/var/www/byt3lab-website
+          RELEASE_DIR=$BASE_DIR/releases/$RELEASE_ID
+
+          echo "▶ Création de la release $RELEASE_ID"
+          ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "mkdir -p $RELEASE_DIR"
+
+          echo "▶ Transfert des fichiers"
+          rsync -az --delete \
+            -e "ssh -p $SSH_PORT" \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.env' \
+            --exclude='.env.local' \
+            --exclude='vendor' \
+            --exclude='web/wp' \
+            --exclude='web/app/uploads' \
+            --exclude='web/app/cache' \
+            --exclude='node_modules' \
+            ./ $SSH_USER@$SSH_HOST:$RELEASE_DIR/
+
+          echo "▶ Activation de la release sur le VPS"
+          ssh -p $SSH_PORT $SSH_USER@$SSH_HOST << EOF
+            set -e
+            cd $RELEASE_DIR
+
+            # Lier la config de production (hors Git)
+            ln -sfn $BASE_DIR/shared/.env .env
+
+            # Lier les uploads partagés (médias qui survivent aux déploiements)
+            mkdir -p $BASE_DIR/shared/web/app/uploads
+            ln -sfn $BASE_DIR/shared/web/app/uploads web/app/uploads
+
+            # Installer WordPress core + plugins via Composer
+            composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+
+            # Permissions : lecture pour www-data (Nginx/PHP-FPM)
+            find $RELEASE_DIR -type d -exec chmod 755 {} \;
+            find $RELEASE_DIR -type f -exec chmod 644 {} \;
+            chmod 640 $BASE_DIR/shared/.env
+            chmod 775 $BASE_DIR/shared/web/app/uploads
+
+            # Activer la nouvelle release (symlink atomique)
+            ln -sfn $RELEASE_DIR $BASE_DIR/current
+
+            # Vider l'OPcache PHP-FPM
+            sudo systemctl reload php8.4-fpm
+
+            echo "✔ Release $RELEASE_ID active"
+          EOF
+
+      - name: Nettoyage des anciennes releases (garde les 5 dernières)
+        if: success()
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          ssh -p $SSH_PORT $SSH_USER@$SSH_HOST \
+            "ls -1dt /var/www/byt3lab-website/releases/*/ 2>/dev/null | tail -n +6 | xargs -r rm -rf"
+
+      - name: Vérification post-déploiement
+        if: success()
+        run: |
+          sleep 3
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.SSH_HOST }}/ || echo "000")
+          echo "HTTP status : $STATUS"
+          if [ "$STATUS" != "200" ] && [ "$STATUS" != "302" ]; then
+            echo "⚠ Le site ne répond pas correctement (status $STATUS)"
+            exit 1
+          fi
+          echo "✔ Site accessible"
