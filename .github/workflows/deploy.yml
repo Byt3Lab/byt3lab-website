@@ -67,6 +67,7 @@ jobs:
 
             # Installer WordPress core + plugins via Composer
             composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+            chmod +x vendor/bin/* 2>/dev/null || true
 
             # Permissions : lecture pour www-data (Nginx/PHP-FPM)
             find $RELEASE_DIR -type d -exec chmod 755 {} \;
@@ -95,12 +96,15 @@ jobs:
 
       - name: Vérification post-déploiement
         if: success()
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }} # ← nouveau secret
         run: |
           sleep 3
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.SSH_HOST }}/ || echo "000")
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL" || echo "000")
+          echo "URL testée : $SITE_URL"
           echo "HTTP status : $STATUS"
-          if [ "$STATUS" != "200" ] && [ "$STATUS" != "302" ]; then
-            echo "⚠ Le site ne répond pas correctement (status $STATUS)"
-            exit 1
-          fi
-          echo "✔ Site accessible"
+          # Accepte 200 (OK), 302 (redirection WordPress), 301 (HTTPS)
+          case "$STATUS" in
+            200|301|302) echo "✔ Site accessible" ;;
+            *) echo "⚠ Le site ne répond pas correctement (status $STATUS)"; exit 1 ;;
+          esac
