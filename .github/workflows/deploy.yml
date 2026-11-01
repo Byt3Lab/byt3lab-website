@@ -97,14 +97,32 @@ jobs:
       - name: Vérification post-déploiement
         if: success()
         env:
-          SITE_URL: ${{ secrets.SITE_URL }} # ← nouveau secret
+          SITE_URL: ${{ secrets.SITE_URL }}
         run: |
-          sleep 3
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL" || echo "000")
-          echo "URL testée : $SITE_URL"
-          echo "HTTP status : $STATUS"
-          # Accepte 200 (OK), 302 (redirection WordPress), 301 (HTTPS)
-          case "$STATUS" in
-            200|301|302) echo "✔ Site accessible" ;;
-            *) echo "⚠ Le site ne répond pas correctement (status $STATUS)"; exit 1 ;;
-          esac
+          if [ -z "$SITE_URL" ]; then
+            echo "⚠ Le secret SITE_URL n'est pas défini dans GitHub (Settings → Secrets → Actions)"
+            exit 1
+          fi
+
+          echo "Test de $SITE_URL"
+
+          # 5 tentatives espacées de 3s (le temps que PHP-FPM recharge)
+          for i in 1 2 3 4 5; do
+            sleep 3
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$SITE_URL" || echo "000")
+            echo "Tentative $i : status $STATUS"
+            
+            case "$STATUS" in
+              200|301|302) 
+                echo "✔ Site accessible ($STATUS)"
+                exit 0
+                ;;
+            esac
+          done
+
+          echo "⚠ Le site ne répond pas correctement (dernier status : $STATUS)"
+          echo "Diagnostic :"
+          echo "  - SITE_URL = $SITE_URL"
+          echo "  - curl --max-time 10 -I $SITE_URL"
+          curl -I --max-time 10 "$SITE_URL" || true
+          exit 1
