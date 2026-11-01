@@ -1,0 +1,18 @@
+{
+    "title": "solutions",
+    "slug": "solutions",
+    "description": "solutions",
+    "css_files": [
+        "assets\/css\/bootstrap.min_.css",
+        "assets\/css\/global.css"
+    ],
+    "js_files": [
+        "assets\/js\/bootstrap.min_.js",
+        "assets\/js\/main.js"
+    ],
+    "components": [
+        "header",
+        "solutions-body",
+        "footer"
+    ]
+}

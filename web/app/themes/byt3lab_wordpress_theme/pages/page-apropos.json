@@ -1,0 +1,19 @@
+{
+    "title": "apropos",
+    "slug": "apropos",
+    "description": "Page À Propos de BYT3LAB (Alias)",
+    "css_files": [
+        "assets/css/bootstrap.min_.css",
+        "assets/css/global.css",
+        "assets/css/premium-theme.css"
+    ],
+    "js_files": [
+        "assets/js/bootstrap.min_.js",
+        "assets/js/main.js"
+    ],
+    "components": [
+        "header",
+        "apropos-body",
+        "footer"
+    ]
+}

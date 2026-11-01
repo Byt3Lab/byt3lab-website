@@ -1,0 +1,220 @@
+/* ==========================================================================
+   BYT3LAB Premium Theme Styles & Tooltip Perfection
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. HIGH-PRECISION PREMIUM TOOLTIPS (Bootstrap 5 Overrides)
+   -------------------------------------------------------------------------- */
+.tooltip {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px !important;
+    z-index: 100000 !important;
+    pointer-events: none !important;
+    opacity: 0;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.tooltip.show {
+    opacity: 1 !important;
+}
+
+/* Tooltip Inner Container: Frosted Dark Slate Glass with Subtle Cyan Glow */
+.tooltip .tooltip-inner {
+    max-width: 280px !important;
+    padding: 8px 14px !important;
+    color: #f8fafc !important;
+    text-align: center !important;
+    background-color: rgba(11, 15, 25, 0.96) !important;
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.8), 0 0 16px rgba(56, 189, 248, 0.22) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    line-height: 1.45 !important;
+}
+
+/* Tooltip Arrows Precision Styling */
+.bs-tooltip-top .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow::before {
+    border-top-color: #38bdf8 !important;
+}
+
+.bs-tooltip-bottom .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow::before {
+    border-bottom-color: #38bdf8 !important;
+}
+
+.bs-tooltip-start .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow::before {
+    border-left-color: #38bdf8 !important;
+}
+
+.bs-tooltip-end .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before {
+    border-right-color: #38bdf8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. SHINY BRILLIANT WHITE TEXT & LOGO EFFECT
+   -------------------------------------------------------------------------- */
+.text-shiny-white,
+.c-navbar__brand-text--shiny {
+    font-family: 'Nasalization', 'Roboto', sans-serif !important;
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 40%, #ffffff 60%, #e2e8f0 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.85)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.4)) !important;
+    display: inline-block;
+    position: relative;
+    letter-spacing: 1px !important;
+    transition: filter 0.3s ease, transform 0.3s ease !important;
+}
+
+.c-navbar__logo-link:hover .c-navbar__brand-text--shiny,
+.text-shiny-white:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1)) drop-shadow(0 0 28px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 35px rgba(56, 189, 248, 0.4)) !important;
+    transform: scale(1.02);
+}
+
+/* Shimmer animation bar on hover */
+@keyframes byt3labShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* --------------------------------------------------------------------------
+   3. PREMIUM CARDS & INTERACTION HELPERS
+   -------------------------------------------------------------------------- */
+.card-premium {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9) !important;
+    border-radius: 16px !important;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease !important;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+}
+
+.card-premium:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.12), 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+/* Glowing tech pills */
+.badge-tech-pill {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-family: monospace;
+    font-weight: 600;
+    color: #0284c7;
+    background: rgba(2, 132, 199, 0.08);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    border-radius: 20px;
+    cursor: default;
+    transition: all 0.2s ease;
+}
+
+.badge-tech-pill:hover {
+    background: rgba(2, 132, 199, 0.16);
+    border-color: rgba(2, 132, 199, 0.4);
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   4. TEAM SECTION STYLING
+   -------------------------------------------------------------------------- */
+.team-member-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 35px -8px rgba(2, 132, 199, 0.12);
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+.team-avatar-wrapper {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, #0284c7, #38bdf8);
+    box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
+    transition: transform 0.3s ease;
+}
+
+.team-member-card:hover .team-avatar-wrapper {
+    transform: scale(1.05);
+}
+
+.team-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #f8fafc;
+}
+
+.team-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #f1f5f9;
+    color: #475569;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.team-social-link:hover {
+    background: #0284c7;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   5. OPTIMAL EYE COMFORT TYPOGRAPHY (NEUTRAL SLATE READING TONES)
+   -------------------------------------------------------------------------- */
+/* Ensure long text, paragraphs, and descriptions use soft, high-contrast slate colors */
+p,
+.lead,
+.service-content p,
+.solution-content p,
+.job-description p,
+.entry-content p,
+.faq-card p,
+.job-card p {
+    color: #334155 !important;
+    line-height: 1.75;
+    letter-spacing: 0.15px;
+}
+
+/* Override text-secondary across all components to eliminate washed-out/blue text */
+.text-secondary {
+    color: #334155 !important;
+}
+
+/* Text in dark containers */
+.text-white p,
+.bg-dark p,
+[style*="background: #0f172a"] p,
+[style*="background: #0b0f19"] p,
+[style*="background: linear-gradient"] p {
+    color: #e2e8f0 !important;
+}
+

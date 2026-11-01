@@ -1,0 +1,18 @@
+{
+    "title": "contact",
+    "slug": "contact",
+    "description": "contact",
+    "css_files": [
+        "assets\/css\/bootstrap.min_.css",
+        "assets\/css\/global.css"
+    ],
+    "js_files": [
+        "assets\/js\/bootstrap.min_.js",
+        "assets\/js\/main.js"
+    ],
+    "components": [
+        "header",
+        "contact-body",
+        "footer"
+    ]
+}

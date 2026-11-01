@@ -1,0 +1,18 @@
+{
+    "title": "melodi",
+    "slug": "melodi",
+    "description": "progiciel de gestion d\\\\\\'entreprise modulaire et scalable",
+    "css_files": [
+        "assets\/css\/bootstrap.min_.css",
+        "assets\/css\/global.css"
+    ],
+    "js_files": [
+        "assets\/js\/bootstrap.min_.js",
+        "assets\/js\/main.js"
+    ],
+    "components": [
+        "footer",
+        "melodi-body",
+        "header"
+    ]
+}

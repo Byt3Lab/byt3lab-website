@@ -1,0 +1,8 @@
+{
+    "name": "equipe-body",
+    "title": "Équipe Body",
+    "description": "Affichage complet et interactif de l'équipe BYT3LAB avec filtres par pôle",
+    "category": "element",
+    "author": "byt3lab",
+    "version": "1.0.0"
+}

@@ -1,0 +1,91 @@
+/*
+Theme Name: byt3lab_wordpress_theme
+Text Domain: byt3lab_wordpress_theme
+Version: 1.0.0
+Author: byt3lab
+Description: 
+*/
+
+@font-face {
+    font-family: 'Beyonders';
+    src: url('assets/fonts/Beyonders.otf') format('opentype'),
+        url('assets/fonts/Beyonders.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Nasalization";
+    src: url('assets/fonts/NasalizationRg.otf') format('opentype');
+}
+
+.f-beyonders {
+    font-family: 'Beyonders';
+}
+
+.f-roboto {
+    font-family: 'Roboto';
+}
+
+.f-nasalization {
+    font-family: 'Nasalization';
+}
+
+/* Light Theme Global Styles */
+:root {
+    --bg-main: #ffffff;
+    --bg-alt: #f8fafc;
+    --bg-card: #ffffff;
+    --text-heading: #0f172a;
+    --text-body: #334155;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --primary-blue: #0284c7;
+    --primary-blue-hover: #0369a1;
+}
+
+body {
+    background-color: var(--bg-main) !important;
+    color: var(--text-body) !important;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Eye comfort typography rules for long texts and paragraphs */
+p, .lead, article p, .entry-content p, .service-content p, .solution-content p, .job-description p {
+    color: #334155;
+    line-height: 1.75;
+}
+
+.text-secondary {
+    color: #334155 !important;
+}
+
+/* Overrides for Bootstrap dark helpers if remaining */
+.bg-dark {
+    background-color: #ffffff !important;
+}
+
+.text-white {
+    color: var(--text-heading) !important;
+}
+
+.text-white-50 {
+    color: var(--text-muted) !important;
+}
+
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-blue-hover);
+}
+
+a p, a .text-secondary, a .text-muted {
+    color: #334155;
+}

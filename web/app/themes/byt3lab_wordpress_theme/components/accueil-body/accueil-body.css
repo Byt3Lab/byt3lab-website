@@ -1,0 +1,168 @@
+/* BYT3LAB Homepage Modern Redesign Styles */
+
+.component-accueil-body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Hero Section High-Tech Styling */
+.hero-tech-bg {
+    background: radial-gradient(circle at 50% 10%, rgba(2, 132, 199, 0.1) 0%, rgba(255, 255, 255, 0.98) 60%), #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.hero-grid-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(to right, rgba(2, 132, 199, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 132, 199, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* High-Tech Cockpit Dashboard Card */
+.hero-cockpit-card {
+    background: #ffffff;
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(2, 132, 199, 0.08);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-cockpit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 60px -10px rgba(2, 132, 199, 0.14), 0 0 0 1px rgba(2, 132, 199, 0.25);
+}
+
+.cockpit-header {
+    background: #0f172a;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cockpit-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.cockpit-dot--red { background: #ef4444; }
+.cockpit-dot--yellow { background: #f59e0b; }
+.cockpit-dot--green { background: #10b981; }
+
+.status-live-pulse {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: livePulse 2s infinite;
+}
+
+@keyframes livePulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Metric Stats Cards */
+.metric-stat-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.03);
+}
+
+.metric-stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(2, 132, 199, 0.4);
+    box-shadow: 0 10px 25px -4px rgba(2, 132, 199, 0.08);
+}
+
+/* Subsidiary Showcase Cards */
+.subsidiary-card {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.subsidiary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.08);
+}
+
+/* Team Member Avatars */
+.team-member-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(2, 132, 199, 0.4);
+    box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.08);
+}
+
+.team-avatar-wrapper {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    margin: 0 auto 16px auto;
+    overflow: hidden;
+    border: 2.5px solid #0284c7;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.team-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-social-link {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.team-social-link:hover {
+    background: #0284c7;
+    color: #ffffff !important;
+    border-color: #0284c7;
+    transform: translateY(-2px);
+}

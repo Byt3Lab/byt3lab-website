@@ -1,0 +1,18 @@
+{
+    "title": "ngrafix",
+    "slug": "ngrafik",
+    "description": "services de marketing, cr\u00e9ation de contenu, audio, vid\u00e9o, graphisme, infographie",
+    "css_files": [
+        "assets\/css\/bootstrap.min_.css",
+        "assets\/css\/global.css"
+    ],
+    "js_files": [
+        "assets\/js\/bootstrap.min_.js",
+        "assets\/js\/main.js"
+    ],
+    "components": [
+        "footer",
+        "ngrafik-body",
+        "header"
+    ]
+}

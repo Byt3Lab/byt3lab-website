@@ -1,0 +1,46 @@
+/* ==========================================================================
+   BYT3LAB Component Realisations Body - Premium Portfolio Styles
+   ========================================================================== */
+
+.component-realisations-body {
+    background-color: #ffffff;
+}
+
+.component-realisations-body .card-premium .transition-transform {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.component-realisations-body .card-premium:hover .transition-transform {
+    transform: scale(1.04);
+}
+
+/* Project Filter Buttons */
+.project-filter-btn {
+    border-radius: 30px;
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 18px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.project-filter-btn:hover {
+    border-color: #0284c7;
+    color: #0284c7;
+    background: rgba(2, 132, 199, 0.04);
+}
+
+.project-filter-btn.active {
+    background: #0284c7;
+    border-color: #0284c7;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.project-item-col {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}

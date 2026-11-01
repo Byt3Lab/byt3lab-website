@@ -1,0 +1,18 @@
+{
+    "title": "notfound",
+    "slug": "notfound",
+    "description": "notfound",
+    "css_files": [
+        "assets\/css\/bootstrap.min_.css",
+        "assets\/css\/global.css"
+    ],
+    "js_files": [
+        "assets\/js\/bootstrap.min_.js",
+        "assets\/js\/main.js"
+    ],
+    "components": [
+        "header",
+        "notfound-body",
+        "footer"
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "title": "ngrafix",
+    "slug": "ngrafix",
+    "description": "Agence créative Ngrafix - Branding, Identité Visuelle & Médias",
+    "css_files": [
+        "assets\/css\/bootstrap.min_.css",
+        "assets\/css\/global.css"
+    ],
+    "js_files": [
+        "assets\/js\/bootstrap.min_.js",
+        "assets\/js\/main.js"
+    ],
+    "components": [
+        "header",
+        "ngrafik-body",
+        "footer"
+    ]
+}

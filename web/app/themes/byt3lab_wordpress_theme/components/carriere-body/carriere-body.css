@@ -1,0 +1,125 @@
+.component-carriere-body {
+    background-color: #ffffff;
+    color: #0f172a;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Hero & Patterns */
+.carriere-hero-bg {
+    background: radial-gradient(circle at 15% 20%, rgba(2, 132, 199, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 80%, rgba(37, 99, 235, 0.06) 0%, transparent 45%),
+                #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.carriere-grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* Status live pulse */
+.status-live-pulse {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulse-live 2s infinite;
+}
+
+@keyframes pulse-live {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Job Cards */
+.job-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 26px;
+    transition: all 0.25s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    position: relative;
+}
+
+.job-card:hover {
+    transform: translateY(-4px);
+    border-color: #0284c7;
+    box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.12);
+}
+
+.job-card__title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    transition: color 0.2s ease;
+    line-height: 1.35;
+}
+
+.job-card:hover .job-card__title {
+    color: #0284c7;
+}
+
+/* Filter pills */
+.job-filter-btn {
+    border-radius: 30px;
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 18px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.job-filter-btn:hover {
+    border-color: #0284c7;
+    color: #0284c7;
+    background: rgba(2, 132, 199, 0.04);
+}
+
+.job-filter-btn.active {
+    background: #0284c7;
+    border-color: #0284c7;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+/* Process Steps */
+.process-step-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(2, 132, 199, 0.1);
+    color: #0284c7;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(2, 132, 199, 0.2);
+}

@@ -1,0 +1,138 @@
+{
+    "name": "byt3lab_wordpress_theme",
+    "version": "1.0.0",
+    "author": "byt3lab",
+    "pages": [
+        {
+            "title": "accueil",
+            "filename": "pages\/page-accueil.php"
+        },
+        {
+            "title": "services",
+            "filename": "pages\/page-services.php"
+        },
+        {
+            "title": "blog",
+            "filename": "pages\/page-blog.php"
+        },
+        {
+            "title": "notfound",
+            "filename": "pages\/page-notfound.php"
+        },
+        {
+            "title": "carriere",
+            "filename": "pages\/page-carriere.php"
+        },
+        {
+            "title": "r\u00e9alisations",
+            "filename": "pages\/page-realisations.php"
+        },
+        {
+            "title": "solutions",
+            "filename": "pages\/page-solutions.php"
+        },
+        {
+            "title": "melodi",
+            "filename": "pages\/page-melodi.php"
+        },
+        {
+            "title": "a-propos",
+            "filename": "pages\/page-a-propos.php"
+        },
+        {
+            "title": "equipe",
+            "filename": "pages\/page-equipe.php"
+        }
+    ],
+    "components": [
+        {
+            "name": "Footer",
+            "slug": "footer",
+            "type": "layout"
+        },
+        {
+            "name": "Header",
+            "slug": "header",
+            "type": "layout"
+        },
+        {
+            "name": "Footer",
+            "slug": "footer",
+            "type": "layout"
+        },
+        {
+            "name": "Header",
+            "slug": "header",
+            "type": "layout"
+        },
+        {
+            "name": "accueil body",
+            "slug": "accueil-body",
+            "type": "element"
+        },
+        {
+            "name": "conact body",
+            "slug": "conact-body",
+            "type": "element"
+        },
+        {
+            "name": "carriere body",
+            "slug": "carriere-body",
+            "type": "element"
+        },
+        {
+            "name": "realisations body",
+            "slug": "realisations-body",
+            "type": "element"
+        },
+        {
+            "name": "services body",
+            "slug": "services-body",
+            "type": "element"
+        },
+        {
+            "name": "blog body",
+            "slug": "blog-body",
+            "type": "element"
+        },
+        {
+            "name": "notfound body",
+            "slug": "notfound-body",
+            "type": "element"
+        },
+        {
+            "name": "solutions body",
+            "slug": "solutions-body",
+            "type": "element"
+        },
+        {
+            "name": "pricing body",
+            "slug": "pricing-body",
+            "type": "element"
+        },
+        {
+            "name": "melodi-body",
+            "slug": "melodi-body",
+            "type": "element"
+        },
+        {
+            "name": "apropos body",
+            "slug": "apropos-body",
+            "type": "element"
+        },
+        {
+            "name": "equipe body",
+            "slug": "equipe-body",
+            "type": "element"
+        }
+    ],
+    "assets": {
+        "css": [],
+        "js": []
+    },
+    "special_pages": {
+        "front_page": "accueil",
+        "not_found": "notfound",
+        "posts_page": "blog"
+    }
+}

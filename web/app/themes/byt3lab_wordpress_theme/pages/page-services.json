@@ -1,0 +1,18 @@
+{
+    "title": "services",
+    "slug": "services",
+    "description": "services",
+    "css_files": [
+        "assets\/css\/bootstrap.min_.css",
+        "assets\/css\/global.css"
+    ],
+    "js_files": [
+        "assets\/js\/bootstrap.min_.js",
+        "assets\/js\/main.js"
+    ],
+    "components": [
+        "header",
+        "services-body",
+        "footer"
+    ]
+}
