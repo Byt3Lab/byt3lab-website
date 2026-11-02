@@ -69,6 +69,14 @@ jobs:
             composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
             chmod +x vendor/bin/* 2>/dev/null || true
 
+            # Permissions WordPress (upgrade, plugins, uploads)
+            chmod -R 775 web/app
+            chmod g+s web/app web/app/plugins web/app/uploads 2>/dev/null || true
+            mkdir -p web/app/upgrade
+            chmod 775 web/app/upgrade
+            chmod g+s web/app/upgrade
+            chgrp -R www-data web/app
+            
             # Permissions : lecture pour www-data (Nginx/PHP-FPM)
             find $RELEASE_DIR -type d -exec chmod 755 {} \;
             find $RELEASE_DIR -type f -exec chmod 644 {} \;
