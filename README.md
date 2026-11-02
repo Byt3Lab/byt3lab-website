@@ -74,3 +74,11 @@ docker compose exec php vendor/bin/wp --allow-root <commande>
 # Accéder à MariaDB
 docker compose exec db mariadb -uwordpress -pwordpress wordpress
 ```
+
+## Notes importantes :
+
+- Les plugins installés via l'interface ne sont PAS versionnés dans Git. Si on redéploies depuis une autre machine, ils ne seront pas là.
+- La philosophie Bedrock est de gérer les plugins via Composer (composer require wpackagist-plugin/updraftplus). C'est plus propre, reproductible, et versionné.
+- La solution symlink shared est un compromis pratique : elle permet d'installer via l'interface tout en gardant les plugins entre les déploiements. Mais elle dévie du standard Bedrock.
+- Pour les plugins critiques, utiliser Composer. Pour les plugins mineurs, l'interface avec symlink shared est acceptable.
+- "Les plugins listés dans composer.json sont gérés par l'agence. Vous pouvez installer d'autres plugins via l'admin, mais ils ne sont pas sauvegardés par le pipeline."

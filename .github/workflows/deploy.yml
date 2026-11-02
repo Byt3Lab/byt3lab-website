@@ -71,11 +71,27 @@ jobs:
 
             # Permissions WordPress (upgrade, plugins, uploads)
             chmod -R 775 web/app
-            chmod g+s web/app web/app/plugins web/app/uploads 2>/dev/null || true
+            chmod g+s web/app 2>/dev/null || true
+
+            # Créer les dossiers partagés s'ils n'existent pas (côté shared)
+            mkdir -p $BASE_DIR/shared/web/app/plugins
+            chmod 775 $BASE_DIR/shared/web/app/plugins
+            chmod g+s $BASE_DIR/shared/web/app/plugins
+
+            # Créer les symlinks (plugins et uploads vers shared)
+            rm -rf web/app/plugins
+            ln -sfn $BASE_DIR/shared/web/app/plugins web/app/plugins
+            mkdir -p $BASE_DIR/shared/web/app/uploads
+            rm -rf web/app/uploads
+            ln -sfn $BASE_DIR/shared/web/app/uploads web/app/uploads
+
+            # Créer le dossier upgrade (local à la release, pas besoin de persister)
             mkdir -p web/app/upgrade
             chmod 775 web/app/upgrade
             chmod g+s web/app/upgrade
-            chgrp -R www-data web/app
+
+            # Groupe www-data sur tout (permet à PHP-FPM d'écrire)
+            chgrp -R www-data web/app 2>/dev/null || true
             
             # Permissions : lecture pour www-data (Nginx/PHP-FPM)
             find $RELEASE_DIR -type d -exec chmod 755 {} \;
