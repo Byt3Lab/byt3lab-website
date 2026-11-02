@@ -67,7 +67,12 @@ jobs:
 
             # Installer WordPress core + plugins via Composer
             composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+
             chmod +x vendor/bin/* 2>/dev/null || true
+            
+            # Rendre WP-CLI exécutable (Composer peut perdre le bit +x selon l'umask)
+            chmod +x vendor/bin/* vendor/wp-cli/wp-cli/bin/wp 2>/dev/null || true
+            chmod +x vendor/wp-cli/wp-cli/php/boot-fs.php 2>/dev/null || true
 
             # Permissions WordPress (upgrade, plugins, uploads)
             chmod -R 775 web/app
