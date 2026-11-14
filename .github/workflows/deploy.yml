@@ -3,11 +3,11 @@ name: Deploy to VPS
 on:
   push:
     branches: [main]
-  workflow_dispatch: # Permet de lancer manuellement depuis l'onglet Actions
+  workflow_dispatch:
 
 concurrency:
   group: deploy-production
-  cancel-in-progress: false # Ne jamais annuler un déploiement en cours
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -16,6 +16,22 @@ jobs:
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
+
+      # ═══════════════════════════════════════════════════════
+      # BUILD AVANT LE DÉPLOIEMENT
+      # ═══════════════════════════════════════════════════════
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: web/app/themes/byt3lab-theme/package-lock.json
+
+      - name: Build du thème (Vite)
+        working-directory: web/app/themes/byt3lab-theme
+        run: |
+          npm ci
+          npm run build
 
       - name: Configuration SSH
         run: |
@@ -39,7 +55,7 @@ jobs:
           echo "▶ Création de la release $RELEASE_ID"
           ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "mkdir -p $RELEASE_DIR"
 
-          echo "▶ Transfert des fichiers"
+          echo "▶ Transfert des fichiers (avec public/build inclus)"
           rsync -az --delete \
             -e "ssh -p $SSH_PORT" \
             --exclude='.git' \
@@ -58,61 +74,44 @@ jobs:
             set -e
             cd $RELEASE_DIR
 
-            # Lier la config de production (hors Git)
             ln -sfn $BASE_DIR/shared/.env .env
 
-            # Lier les uploads partagés (médias qui survivent aux déploiements)
             mkdir -p $BASE_DIR/shared/web/app/uploads
             ln -sfn $BASE_DIR/shared/web/app/uploads web/app/uploads
 
-            # Installer WordPress core + plugins via Composer
             composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 
-            # Installer les dépendances Composer du thème (Acorn + Laravel)
+            # Dépendances du thème
             cd web/app/themes/byt3lab-theme
             composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
-            cd ../../..
+            cd ../../../..
 
-            chmod +x vendor/bin/* 2>/dev/null || true
-            
-            # Rendre WP-CLI exécutable (Composer peut perdre le bit +x selon l'umask)
             chmod +x vendor/bin/* vendor/wp-cli/wp-cli/bin/wp 2>/dev/null || true
             chmod +x vendor/wp-cli/wp-cli/php/boot-fs.php 2>/dev/null || true
 
-            # Permissions WordPress (upgrade, plugins, uploads)
             chmod -R 775 web/app
             chmod g+s web/app 2>/dev/null || true
 
-            # Créer les dossiers partagés s'ils n'existent pas (côté shared)
             mkdir -p $BASE_DIR/shared/web/app/plugins
             chmod 775 $BASE_DIR/shared/web/app/plugins
             chmod g+s $BASE_DIR/shared/web/app/plugins
 
-            # Créer les symlinks (plugins et uploads vers shared)
             rm -rf web/app/plugins
             ln -sfn $BASE_DIR/shared/web/app/plugins web/app/plugins
-            mkdir -p $BASE_DIR/shared/web/app/uploads
-            rm -rf web/app/uploads
-            ln -sfn $BASE_DIR/shared/web/app/uploads web/app/uploads
 
-            # Créer le dossier upgrade (local à la release, pas besoin de persister)
             mkdir -p web/app/upgrade
             chmod 775 web/app/upgrade
             chmod g+s web/app/upgrade
 
-            # Groupe www-data sur tout (permet à PHP-FPM d'écrire)
             chgrp -R www-data web/app 2>/dev/null || true
-            
-            # Permissions : lecture pour www-data (Nginx/PHP-FPM)
+
             find $RELEASE_DIR -type d -exec chmod 755 {} \;
             find $RELEASE_DIR -type f -exec chmod 644 {} \;
             chmod 640 $BASE_DIR/shared/.env
             chmod 775 $BASE_DIR/shared/web/app/uploads
 
-            # Activer la nouvelle release (symlink atomique)
             ln -sfn $RELEASE_DIR $BASE_DIR/current
 
-            # Vider l'OPcache PHP-FPM
             sudo systemctl reload php8.4-fpm
 
             echo "✔ Release $RELEASE_ID active"
@@ -134,42 +133,17 @@ jobs:
           SITE_URL: ${{ secrets.SITE_URL }}
         run: |
           if [ -z "$SITE_URL" ]; then
-            echo "⚠ Le secret SITE_URL n'est pas défini dans GitHub (Settings → Secrets → Actions)"
+            echo "⚠ Le secret SITE_URL n'est pas défini"
             exit 1
           fi
-
-          echo "Test de $SITE_URL"
-
-          # 5 tentatives espacées de 3s (le temps que PHP-FPM recharge)
           for i in 1 2 3 4 5; do
             sleep 3
             STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$SITE_URL" || echo "000")
             echo "Tentative $i : status $STATUS"
-            
             case "$STATUS" in
-              200|301|302) 
-                echo "✔ Site accessible ($STATUS)"
-                exit 0
-                ;;
+              200|301|302) echo "✔ Site accessible ($STATUS)"; exit 0 ;;
             esac
           done
-
-          echo "⚠ Le site ne répond pas correctement (dernier status : $STATUS)"
-          echo "Diagnostic :"
-          echo "  - SITE_URL = $SITE_URL"
-          echo "  - curl --max-time 10 -I $SITE_URL"
+          echo "⚠ Site KO (status $STATUS)"
           curl -I --max-time 10 "$SITE_URL" || true
           exit 1
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-          cache-dependency-path: web/app/themes/byt3lab-theme/package-lock.json
-
-      - name: Build du thème (Vite)
-        working-directory: web/app/themes/byt3lab-theme
-        run: |
-          npm ci
-          npm run build
