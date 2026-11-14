@@ -68,6 +68,11 @@ jobs:
             # Installer WordPress core + plugins via Composer
             composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 
+            # Installer les dépendances Composer du thème (Acorn + Laravel)
+            cd web/app/themes/byt3lab-theme
+            composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+            cd ../../..
+
             chmod +x vendor/bin/* 2>/dev/null || true
             
             # Rendre WP-CLI exécutable (Composer peut perdre le bit +x selon l'umask)
@@ -155,3 +160,16 @@ jobs:
           echo "  - curl --max-time 10 -I $SITE_URL"
           curl -I --max-time 10 "$SITE_URL" || true
           exit 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: web/app/themes/byt3lab-theme/package-lock.json
+
+      - name: Build du thème (Vite)
+        working-directory: web/app/themes/byt3lab-theme
+        run: |
+          npm ci
+          npm run build
