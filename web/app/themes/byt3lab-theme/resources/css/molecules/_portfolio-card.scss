@@ -1,0 +1,42 @@
+    // Molécule: Carte de la galerie
+    $portfolio-overlay-bg: rgba(119, 203, 114, 0.9); // Couleur verte de survol présente sur la maquette
+    $portfolio-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    .m-portfolio-card {
+        cursor: pointer;
+
+        &__img {
+            transition: $portfolio-transition;
+            transform: scale(1);
+        }
+
+        // Configuration initiale du calque vert (invisible)
+        &__overlay {
+            background-color: $portfolio-overlay-bg;
+            opacity: 0;
+            transition: $portfolio-transition;
+        }
+
+        &__title {
+            letter-spacing: 1px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transform: translateY(-15px);
+            transition: $portfolio-transition;
+        }
+
+        // Action de Survol (Hover State d'après GalleryToolsSection.png)
+        &:hover {
+            .m-portfolio-card__img {
+                transform: scale(1.05);
+            }
+
+            .m-portfolio-card__overlay {
+                opacity: 1;
+            }
+
+            .m-portfolio-card__title,
+            .a-portfolio-btn {
+                transform: translateY(0);
+            }
+        }
+    }

@@ -1,0 +1,15 @@
+// src/scss/atoms/_social-icon.scss
+.a-social-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--color-white);
+    border-radius: 50%;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    &:hover {
+        background-color: var(--color-secondary); // Devient bleu au survol
+        color: var(--color-white);
+        transform: scale(1.1);
+    }
+}

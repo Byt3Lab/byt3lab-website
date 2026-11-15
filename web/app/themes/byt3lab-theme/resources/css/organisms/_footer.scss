@@ -1,0 +1,85 @@
+// src/scss/organisms/_footer.scss
+.c-footer {
+  background-color: #13171c; 
+  color: rgba(255, 255, 255, 0.7);
+  padding: var(--spacing-xl) 0 0 0;
+  font-size: 0.95rem;
+
+  &__main {
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  &__secondary {
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  &__title {
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: var(--font-title);
+    line-height: 2;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  &__logo {
+    &-text {
+      font-size: 1rem;
+      font-weight: 800;
+      font-family: var(--font-title);
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__text {
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1rem;
+    font-family: var(--font-body);
+  }
+
+  &__newsletter-desc {
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.5);
+
+    input {
+      font-family: var(--font-body);
+    }
+  }
+
+  &__brand-highlight {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  &__bar {
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+  }
+
+  &__legal-link {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    position: relative;
+
+    &:not(:first-child)::before {
+      content: '|';
+      position: absolute;
+      left: calc(-1 * (var(--spacing-md) / 2));
+      color: rgba(255, 255, 255, 0.15);
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}

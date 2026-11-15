@@ -1,0 +1,130 @@
+// byt3lab-ui-system/src/scss/main.scss
+// ==========================================================================
+// 1. CONFIGURATION, BOOTSTRAP & POLICES (Toujours en premier)
+// ==========================================================================
+
+// Intégration Remix Icon avec @use
+//$ri-font-path: "/src/assets/fonts";
+//@use "remixicon/fonts/remixicon.css";
+
+// Intégration de Bootstrap via le système de modules de Sass
+// On charge d'abord vos variables personnalisées en les injectant (with) dans Bootstrap
+@use "bootstrap/scss/bootstrap" with (
+    $primary: #20A3DB,
+    $secondary: #2C9EC6,
+    $success: #3CAE62,
+    $info: #2C9EC6,
+    $dark: #050607,
+    $light: #FFFFFF,
+    // Ajustements optionnels pour la cohérence sémantique
+    $danger: #DC3545,
+    $warning: #FFC107,
+    // Application automatique aux couleurs de fond et de texte de base
+    $body-bg: #FFFFFF,
+    $body-color: #050607
+);
+
+// Si vous avez besoin de fichiers spécifiques de Bootstrap combinés à vos surcharges :
+@use "abstracts/bootstrap-overrides";
+
+// ==========================================================================
+// 2. LOGIQUE D'IMPORTATION DU SYSTÈME (Vos modules locaux)
+// ==========================================================================
+@use "abstracts/variables";
+@use "abstracts/tokens";
+@use "abstracts/mixins";
+@use "abstracts/functions";
+@use "abstracts/breakpoints";
+
+@use "base/reset";
+@use "base/global";
+@use "base/typography";
+@use "base/helpers";
+
+@use "atoms/button";
+@use "atoms/input";
+@use "atoms/badge";
+@use "atoms/link";
+@use "atoms/icon";
+@use "atoms/badge-icon";
+@use "atoms/avatar";
+@use "atoms/social-link";
+@use "atoms/subtitle";
+@use "atoms/title";
+@use "atoms/portfolio-btn";
+@use "atoms/feature-icon";
+@use "atoms/title-line";
+@use "atoms/works-line";
+@use "atoms/work-icon";
+@use "atoms/info-icon";
+@use "atoms/title-separator";
+@use "atoms/label";
+@use "atoms/social-icon";
+@use "atoms/skill-progress";
+@use "atoms/badge-tag";
+@use "atoms/counter";
+@use "atoms/brand-divider";
+@use "atoms/tool";
+
+@use "molecules/card";
+@use "molecules/pricing-card";
+@use "molecules/cta-split";
+@use "molecules/features-grid";
+@use "molecules/service-card";
+@use "molecules/carousel-nav";
+@use "molecules/testimonial-slide";
+@use "molecules/footer-links";
+@use "molecules/footer-contact";
+@use "molecules/newsletter-form";
+@use "molecules/social-block";
+@use "molecules/team-card";
+@use "molecules/portfolio-card";
+@use "molecules/work-card";
+@use "molecules/pub-content";
+@use "molecules/contact-component";
+@use "molecules/counter-card";
+@use "molecules/member-carousel";
+@use "molecules/project-card";
+@use "molecules/tool-card";
+@use "molecules/blog-hero-graphic";
+@use "molecules/search-filter";
+@use "molecules/fomat-block";
+
+@use "organisms/navbar";
+@use "organisms/hero";
+@use "organisms/showcase";
+@use "organisms/about";
+@use "organisms/features-cta";
+@use "organisms/services";
+@use "organisms/pricing";
+@use "organisms/testimonials";
+@use "organisms/footer";
+@use "organisms/portfolio";
+@use "organisms/project-focus";
+@use "organisms/works";
+@use "organisms/pub-cta";
+@use "organisms/contact-section";
+@use "organisms/counter-section";
+@use "organisms/hero-section";
+@use "organisms/member-skills-gallery";
+@use "organisms/member-projects";
+@use "organisms/about-description";
+@use "organisms/about-tools";
+@use "organisms/services-packages";
+@use "organisms/service-pricing";
+@use "organisms/blog-header";
+@use "organisms/blog-description";
+@use "organisms/blog-catalog";
+@use "organisms/team";
+@use "organisms/article-hero";
+@use "organisms/article-content";
+@use "organisms/related-articles";
+@use "organisms/hero-project";
+@use "organisms/projets-details";
+@use "organisms/project-gallery";
+@use "organisms/gallery-lightbox";
+@use "organisms/courses-catalog";
+@use "organisms/training-page-sections";
+@use "organisms/contact-map";
+
+@use "templates/home";

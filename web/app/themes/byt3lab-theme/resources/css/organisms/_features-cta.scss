@@ -1,0 +1,11 @@
+// src/scss/organisms/_features-cta.scss
+@use "../abstracts/breakpoints" as *;
+
+.c-features-cta {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--color-white, #ffffff);
+
+  &__header {
+    margin-bottom: var(--spacing-xl);
+  }
+}

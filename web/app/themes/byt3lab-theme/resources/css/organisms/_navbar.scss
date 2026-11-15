@@ -1,0 +1,309 @@
+// src/scss/organisms/_navbar.scss
+@use "../abstracts/breakpoints" as *;
+
+.c-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: var(--spacing-md) 0;
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+
+  // --- ÉTATS DES COULEURS PAR DÉFAUT (Desktop au-dessus du Hero) ---
+  // On force les atomes et composants internes à hériter d'une couleur blanche
+  .a-link {
+    color: var(--color-white, #ffffff);
+    
+    &:hover, &.is-active {
+      color: var(--color-primary, #00a8ff);
+    }
+  }
+
+  &__burger {
+    color: var(--color-white, #ffffff);
+  }
+
+  // Force les liens en sombre même avant le scroll, sans toucher au comportement de fond transparent
+  &--light-context:not(.c-navbar--scrolled) {
+    .a-link {
+      color: var(--color-dark, #111111);
+      
+      &:hover, &.is-active {
+        color: var(--color-primary, #00a8ff);
+      }
+    }
+
+    .c-navbar__burger {
+      color: var(--color-dark, #111111);
+    }
+  }
+
+  // --- VARIANT MOBILE OU ÉCRAN SCROLLÉ ---
+  // Dès que la navbar passe sur mobile (fond blanc obligatoire) OU qu'on a scrollé
+  @mixin mixin-navbar-opaque {
+    background-color: var(--color-white, #ffffff);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: var(--spacing-sm) 0;
+
+    // Les liens redeviennent sombres pour contraster avec le fond blanc
+    .a-link {
+      color: var(--color-dark, #111111);
+      
+      &:hover, &.is-active {
+        color: var(--color-primary, #00a8ff);
+      }
+    }
+
+    // Le bouton burger et ses icônes passent au sombre
+    .c-navbar__burger {
+      color: var(--color-dark, #111111);
+    }
+  }
+
+  // Application de la charte opaque selon les contextes
+  @include respond-down('lg') {
+    @include mixin-navbar-opaque;
+  }
+
+  &--scrolled {
+    @include mixin-navbar-opaque;
+  }
+
+  // Layout Container interne
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    @include respond-down('lg') {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+  }
+
+  &__burger {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+
+    @include respond-down('lg') {
+      display: inline-flex;
+      cursor: pointer;
+    }
+  }
+
+  // Menu Principal
+  &__menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+
+    @include respond-down('lg') {
+      display: block;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out, padding 0.3s ease;
+      background-color: var(--color-white, #ffffff);
+      order: 3;
+
+      &.is-active {
+        max-height: 1000px;
+        padding-top: var(--spacing-md);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  // Actions (Bouton Contact)
+  &__actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    @include respond-down('lg') {
+      width: 100%;
+      justify-content: start;
+      max-height: 0;
+      overflow: hidden;
+      background-color: var(--color-white, #ffffff);
+      transition: max-height 0.4s ease-in-out, padding 0.3s ease;
+      order: 4;
+
+      &.is-active {
+        max-height: 100px;
+        padding: var(--spacing-md) 0 var(--spacing-lg) 0;
+      }
+    }
+  }
+
+  &__btn {
+    @include respond-down('lg') {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-left: var(--spacing-md);
+
+    @include respond-down('lg') {
+      margin-left: 0;
+      width: 100%;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    &--has-dropdown {
+      & > .c-navbar__link::after {
+        content: "\ea4e";
+        font-family: "remixicon";
+        margin-left: var(--spacing-xs);
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      &.is-open > .c-navbar__link::after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-xs);
+    text-decoration: none;
+
+    @include respond-down('lg') {
+      padding: var(--spacing-sm) var(--spacing-md);
+      width: 100%;
+    }
+  }
+
+  // Dropdowns (Premier niveau)
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-white, #ffffff);
+    list-style: none;
+    margin: 0;
+    padding: var(--spacing-sm) 0;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+
+    // Sécurité CMS : Dans le dropdown, le texte DOIT rester sombre même si la navbar mère est transparente
+    .a-link {
+      color: var(--color-dark, #111111) !important;
+      
+      &:hover, &.is-active {
+        color: var(--color-primary, #00a8ff) !important;
+      }
+    }
+
+    .c-navbar__item--has-dropdown:hover > & {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @include respond-down('lg') {
+      position: static;
+      width: 100%;
+      box-shadow: none;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      background-color: rgba(0, 0, 0, 0.02);
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+
+      .c-navbar__item--has-dropdown.is-open > & {
+        max-height: 500px;
+      }
+    }
+
+    // Sous-Dropdowns (Deuxième niveau)
+    &--sub {
+      top: 0;
+      left: 100%;
+      margin-left: 2px;
+      opacity: 0;
+      visibility: hidden;
+
+      .c-navbar__dropdown-item--has-dropdown:hover > & {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      @include respond-down('lg') {
+        position: static;
+        max-height: 0;
+
+        .c-navbar__dropdown-item--has-dropdown.is-open > & {
+          max-height: 300px;
+        }
+      }
+    }
+  }
+
+  &__dropdown-item {
+    position: relative;
+
+    &--has-dropdown {
+      & > .c-navbar__dropdown-link::after {
+        content: "\ea6e";
+        font-family: "remixicon";
+        font-size: 1em;
+        position: absolute;
+        right: var(--spacing-sm);
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.3s ease;
+
+        @include respond-down('lg') {
+          position: relative;
+          display: inline-block;
+          right: auto;
+          top: auto;
+          transform: none;
+          margin-left: var(--spacing-xs);
+        }
+      }
+
+      &.is-open > .c-navbar__dropdown-link::after {
+        @include respond-down('lg') {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  &__dropdown-link {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-decoration: none;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+  }
+}

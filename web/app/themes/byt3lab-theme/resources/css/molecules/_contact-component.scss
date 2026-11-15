@@ -1,0 +1,9 @@
+// src/scss/molecules/_contact-components.scss
+.m-contact-details {
+    .a-details-text {
+        text-align: justify;
+    }
+    .a-details-text, .a-info-value {
+        font-family: var(--font-body);
+    }
+}

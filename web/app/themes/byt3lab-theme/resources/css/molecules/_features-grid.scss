@@ -1,0 +1,47 @@
+// src/scss/molecules/_features-grid.scss
+@use "../abstracts/breakpoints" as *;
+
+.m-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  text-align: center;
+  width: 100%;           // Sécurité responsive
+  max-width: 100%;       // Verrouille l'overflow horizontal
+
+  @include respond-down('lg') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  @include respond-down('sm') {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-sm); // Légère réduction du gap sur mobile pour libérer de l'espace
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-sm);
+    width: 100%;         // Empêche l'item de déborder de sa cellule de grille
+    box-sizing: border-box;
+  }
+
+  // Le reste de tes styles (__title, __text) reste identique...
+  &__title {
+    font-size: 0.6rem;
+    font-family: var(--font-title);
+    line-height: 2;
+    font-weight: 600;
+    color: var(--color-dark, #1a1a1a);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  &__text {
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    color: var(--color-gray, #666666);
+    line-height: 1.5;
+  }
+}

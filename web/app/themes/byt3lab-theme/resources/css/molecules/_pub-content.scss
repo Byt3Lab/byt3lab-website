@@ -1,0 +1,16 @@
+// src/scss/molecules/_pub-content.scss
+.m-pub-content {
+    .text-secondary-custom {
+        color: var(--color-secondary);
+    }
+
+    .max-w-2xl {
+        max-width: 680px;
+    }
+    
+    // Padding vertical pour le bouton personnalisé
+    .py-2-5 {
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
+    }
+}

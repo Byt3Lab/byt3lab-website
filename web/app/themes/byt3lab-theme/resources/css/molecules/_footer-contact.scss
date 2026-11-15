@@ -1,0 +1,24 @@
+// src/scss/molecules/_footer-contact.scss
+.m-footer-contact {
+  list-style: none;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+
+  &__label {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 600;
+  }
+
+  &__text, &__link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  &__link:hover {
+    color: var(--color-primary);
+  }
+}

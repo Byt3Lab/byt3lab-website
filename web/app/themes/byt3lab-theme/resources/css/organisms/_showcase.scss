@@ -1,0 +1,160 @@
+// src/scss/organisms/_showcase.scss
+@use "../abstracts/breakpoints" as *;
+
+.c-showcase {
+  position: relative;
+  padding: var(--spacing-xl) 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--color-white, #ffffff);
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+
+    @include respond-down('lg') {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--spacing-md);
+    }
+  }
+
+  // Zone Image / Mockup (Gauche)
+  &__preview {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__mockup {
+    position: relative;
+    max-width: 550px;
+    width: 100%;
+    perspective: 1000px; // Ajoute l'effet de profondeur si on veut incliner comme la maquette
+    
+    @include respond-down('lg') {
+      max-width: 400px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    // Optionnel : Légère rotation 3D pour imiter l'angle du Mac de l'image originale
+    transform: rotateY(-10deg) rotateX(5deg); 
+    transition: transform 0.5s ease;
+
+    @include respond-down('lg') {
+      transform: none; // À plat sur mobile pour une meilleure lisibilité
+    }
+  }
+
+  // Zone Contenu (Droite)
+  &__content {
+    flex: 1;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-family: var(--font-title);
+    font-weight: 700;
+    line-height: 2;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-white, #ffffff);
+
+    @include respond-down('md') {
+      font-size: 1rem;
+    }
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  &__actions {
+    @include respond-down('lg') {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  // --- BARRE D'ONGLETS TRANSVERSALE (Bas) ---
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-lg);
+
+    @include respond-down('md') {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); // Passage sur 2 lignes sur petit mobile
+      gap: var(--spacing-xs);
+    }
+  }
+
+  &__tab-btn {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-body);
+    justify-content: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+    min-width: 110px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: var(--color-white, #ffffff);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    &.is-active {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: var(--color-primary, #00a8ff); // Ta couleur dominante de marque
+      border-color: var(--color-primary, #00a8ff);
+      box-shadow: inset 0 -3px 0 var(--color-primary, #00a8ff);
+    }
+
+    @include respond-down('md') {
+      width: 100%;
+      padding: var(--spacing-xs) var(--spacing-sm);
+    }
+  }
+
+  &__tab-icon {
+    stroke: currentColor;
+    transition: transform 0.3s ease;
+
+    .c-showcase__tab-btn:hover & {
+      transform: translateY(-2px);
+    }
+  }
+
+  &__tab-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}

@@ -1,0 +1,9 @@
+// src/scss/atoms/_label.scss
+.a-label {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-family: var(--font-body);
+    
+    &::after {
+        background-color: transparent !important;
+    }
+}

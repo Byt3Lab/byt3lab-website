@@ -1,0 +1,121 @@
+// src/scss/molecules/_gallery-lightbox.scss
+@use "../abstracts/breakpoints" as *;
+
+.c-gallery-lightbox {
+    background-color: rgba(5, 6, 7, 0.92); 
+    backdrop-filter: blur(12px);
+    padding-right: 0 !important;
+
+    .modal-dialog {
+        max-width: 950px;
+    }
+
+    &__img-wrapper {
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        background-color: #0b0d10;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include respond-down('md') {
+            height: 70vh;
+        }
+    }
+
+    &__img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &__close {
+        position: absolute;
+        top: -45px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(4px);
+        color: var(--color-white, #ffffff);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        z-index: 1060;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: rgba(231, 76, 60, 0.2);
+            border-color: #e74c3c;
+            color: #e74c3c;
+            transform: rotate(90deg);
+        }
+
+        @include respond-down('lg') {
+            right: -50px;
+            top: -10px;
+        }
+    }
+
+    .carousel-caption {
+        position: relative;
+        right: auto;
+        left: auto;
+        margin-top: 1.25rem;
+        padding: 0;
+        
+        .c-gallery-lightbox__title {
+        font-family: var(--font-body);
+        font-size: 1.05rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: rgba(255, 255, 255, 0.9);
+        display: inline-block;
+        border-left: 3px solid var(--color-secondary, #20A3DB);
+        padding-left: 0.75rem;
+        margin: 0;
+        }
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        background: rgba(11, 13, 16, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(4px);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: all 0.3s ease;
+
+        &:hover {
+        background: var(--color-secondary, #20A3DB);
+        border-color: var(--color-secondary, #20A3DB);
+        color: #fff;
+        }
+    }
+
+    .carousel-control-prev { left: -25px; }
+    .carousel-control-next { right: -25px; }
+
+    &:hover {
+        .carousel-control-prev,
+        .carousel-control-next {
+        opacity: 1;
+        }
+        .carousel-control-prev { left: 15px; }
+        .carousel-control-next { right: 15px; }
+    }
+}

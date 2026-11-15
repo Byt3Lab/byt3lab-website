@@ -1,0 +1,35 @@
+.c-project-focus {
+
+    &__thumb {
+        border-radius: 12px !important;
+        img {
+            min-height: 400px;
+        }
+    }
+
+    &-title {
+        font-size: 1rem;
+        font-family: var(--font-title);
+        font-weight: 700;
+        line-height: 2;
+        letter-spacing: 2px;
+    }
+
+    &__content {
+        text-align: justify;
+        font-size: 1rem;
+        font-family: var(--font-body);
+        line-height: 1.6;
+    }
+
+    &__body {
+        text-align: justify;
+        font-size: 1rem;
+        font-family: var(--font-body);
+        line-height: 1.6;
+    }
+
+    &-feature-list {
+        color: var(--color-gray, #666666);
+    }
+}

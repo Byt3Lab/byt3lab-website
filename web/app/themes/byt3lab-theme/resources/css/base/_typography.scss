@@ -1,0 +1,17 @@
+// src/scss/base/_typography.scss
+@font-face {
+  font-family: 'Beyonders';
+  src: url('../../fonts/Beyonders.ttf') format('truetype'),
+       url('../../fonts/Beyonders.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nasalization';
+  src: url('../../fonts/NasalizationRg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

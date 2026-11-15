@@ -1,0 +1,12 @@
+// src/scss/organisms/_blog-description.scss
+.o-blog-description {
+    background-color: var(--color-dark, #050607);
+
+    p {
+        text-align : justify;
+    }
+    
+    .bg-gray-dark {
+        background-color: #0b0d10 !important; 
+    }
+}

@@ -1,0 +1,49 @@
+// src/scss/organisms/_about-description.scss
+.o-about-description {
+    position: relative; 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(5, 6, 7, 0.85);
+        z-index: 1;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .title-font {
+        font-family: var(--font-title);
+        line-height: 2;
+    }
+
+    .text-secondary-font {
+        font-family: var(--font-body);
+        font-size: 1rem;
+    }
+
+    .text-primary-custom {
+        color: var(--color-primary, #3CAE62);
+    }
+
+    .text-secondary-custom {
+        color: var(--color-secondary, #20A3DB);
+    }
+
+    .m-description-text p {
+        line-height: 1.7;
+        text-align: justify;
+    }
+}

@@ -1,0 +1,65 @@
+// src/scss/organisms/_about-tools.scss
+.o-about-tools {
+    background-color: var(--color-dark, #050607); // Respect strict du fond sombre principal
+    width: 100%;
+    overflow: hidden;
+
+    // Typographies de la charte graphique
+    .title-font {
+        font-family: var(--font-title);
+        line-height: 2;
+    }
+
+    .text-secondary-font {
+        font-family: var(--font-body);
+        font-size: 1rem;
+    }
+
+    // Couleurs personnalisées
+    .text-primary-custom {
+        color: var(--color-primary, #3CAE62); // Vert principal
+    }
+
+    .a-title-sub {
+        color: var(--color-secondary, #20A3DB); // Bleu secondaire pour l'accroche
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+
+    .a-brand-divider {
+        width: 60px;
+        height: 3px;
+        background-color: var(--color-primary, #3CAE62);
+        border-radius: 2px;
+    }
+
+    &--light {
+        background-color: var(--color-white, #FFFFFF);
+
+        .a-title {
+            color: var(--color-dark, #050607);
+        }
+
+        .m-tool-card {
+            border: 1px solid rgba(5, 6, 7, 0.05);
+            box-shadow: 0 4px 12px rgba(5, 6, 7, 0.02);
+
+            &__icon-wrapper {
+                background-color: var(--color-light, #F5F5F5);
+            }
+
+            .a-tool-name {
+                color: var(--color-dark, #F5F5F5);
+                font-weight: 600;
+            }
+
+            &:hover {
+                background-color: var(--color-white, #FFFFFF);
+                box-shadow: 0 12px 30px rgba(5, 6, 7, 0.08);
+                border-color: rgba(5, 6, 7, 0.1);
+            }
+        }
+    }
+}

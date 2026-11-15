@@ -1,0 +1,34 @@
+// src/scss/organisms/_testimonials.scss
+@use "../abstracts/breakpoints" as *;
+
+.c-testimonials {
+  position: relative;
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+  color: var(--color-white, #ffffff);
+
+  background-image: linear-gradient(rgba(20, 21, 24, 0.88), rgba(20, 21, 24, 0.88));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: 0.85;
+    z-index: -1;
+  }
+
+  &__carousel {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+}

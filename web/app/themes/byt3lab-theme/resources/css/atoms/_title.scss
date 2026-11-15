@@ -1,0 +1,70 @@
+// src/scss/atoms/_title.scss
+@use "../abstracts/breakpoints" as *;
+.a-title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  line-height: 2;
+  color: inherit;
+  font-size: 1.5rem;
+  line-height: 2;
+  
+  @include respond-down('md') {
+    font-size: 1rem;
+  }
+
+  &-section {
+      font-size: 1rem;
+      text-transform: uppercase;
+      
+      .text-primary-custom {
+          color: var(--color-primary);
+      }
+  }
+
+  &-sub {
+    color: var(--color-secondary, #20A3DB);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+
+  &-section-subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem !important;
+    max-width: 720px;
+    &--gray {
+      color: var(--color-gray, #666666);
+    }
+  }
+
+  &-details {
+    font-size: 1rem;
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+
+  &--md {
+    font-size: 0.8rem;
+    line-height: 2;
+  }
+
+  &--lg {
+    font-size: 2rem;
+    line-height: 2;
+  }
+
+  &--hero {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+
+    @include respond-down('lg') {
+      font-size: 1.5rem;
+    }
+
+    @include respond-down('md') {
+      font-size: 1rem;
+    }
+  }
+}

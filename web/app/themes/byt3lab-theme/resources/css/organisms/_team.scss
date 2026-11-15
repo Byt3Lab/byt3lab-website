@@ -1,0 +1,5 @@
+// src/scss/organisms/_team.scss
+@use "../abstracts/breakpoints" as *;
+.o-team {
+    background-color: var(--color-light, #F8F9FA);
+}

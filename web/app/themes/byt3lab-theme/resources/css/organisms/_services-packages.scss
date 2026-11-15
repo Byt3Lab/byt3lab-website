@@ -1,0 +1,8 @@
+// src/scss/organisms/_services-packages.scss
+.o-services-packages {
+    background-color: var(--color-dark, #050607); // Assure le fond sombre corporatif
+    
+    .font-title {
+        font-family: var(--font-title);
+    }
+}

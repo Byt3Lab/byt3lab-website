@@ -1,0 +1,51 @@
+// src/scss/organisms/_services.scss
+@use "../abstracts/breakpoints" as *;
+
+.c-services {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--color-gray-light);
+  text-align: center;
+
+  &__header {
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl) auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  &__main-title {
+    font-size: 1.5rem;
+    font-family: var(--font-title);
+    line-height: 2;
+    font-weight: 700;
+    color: var(--color-dark, #1a1a1a);
+    margin-bottom: var(--spacing-sm);
+
+    @include respond-down('md') {
+      font-size: 1rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    font-family: var(--font-body);
+    color: var(--color-gray, #666666);
+    line-height: 1.6;
+  }
+
+  // Disposition adaptative de la grille principale
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+
+    @include respond-down('lg') {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
+
+    @include respond-down('sm') {
+      grid-template-columns: 1fr;
+    }
+  }
+}

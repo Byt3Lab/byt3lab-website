@@ -1,0 +1,18 @@
+// src/scss/organisms/_hero-project.scss
+.c-hero-project {
+    min-height: 75vh;
+    padding-top: 120px;
+    padding-bottom: var(--spacing-xl, 60px);
+    overflow: hidden;
+
+    &__bg {
+        background-size: cover;
+        background-position: center;
+        opacity: 0.25;
+        filter: grayscale(20%);
+    }
+
+    .z-index-1 {
+        z-index: 1;
+    }
+}

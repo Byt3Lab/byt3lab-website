@@ -1,0 +1,16 @@
+// Atome: Boutons d'action dans le overlay
+$portfolio-overlay-bg: rgba(119, 203, 114, 0.9); // Couleur verte de survol présente sur la maquette
+$portfolio-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+.a-portfolio-btn {
+    width: 44px;
+    height: 44px;
+    text-decoration: none;
+    transform: translateY(15px);
+    transition: $portfolio-transition;
+    
+    &:hover {
+        background-color: var(--bs-dark) !important;
+        color: var(--bs-white) !important;
+    }
+}

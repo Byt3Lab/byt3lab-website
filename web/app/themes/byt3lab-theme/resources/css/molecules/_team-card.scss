@@ -1,0 +1,107 @@
+// src/scss/molecules/_team-card.scss
+.m-team-card {
+    position: relative;
+    background: transparent;
+    max-width: 340px;
+    width: 100%;
+
+    &__image-wrapper {
+        position: relative;
+        overflow: visible; 
+        display: inline-block;
+        width: 100%;
+    }
+
+    &__img-container {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    &__dots {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        background-image: radial-gradient(rgba(0, 0, 0, 0.4) 1.2px, transparent 1.2px);
+        background-size: 6px 6px;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+
+        &--top {
+            top: -12px;
+            right: -12px;
+            transform: translate(-5px, 5px);
+        }
+
+        &--bottom {
+            bottom: -12px;
+            left: -12px;
+            transform: translate(5px, -5px);
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background-color: rgba(#3CAE62, 0.9);
+        z-index: 3;
+        opacity: 0;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        
+        .a-social-link {
+            color: var(--color-white);
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+    }
+
+    &:hover {
+        .m-team-card__img {
+            transform: scale(1.03);
+        }
+
+        .m-team-card__overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .m-team-card__dots {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
+
+    &__info {
+        padding-top: 0.5rem;
+    }
+
+    &__name {
+        font-size: 1.05rem;
+        font-family: var(--font-title);
+        font-weight: 700;
+        letter-spacing: 0.2px;
+    }
+
+    &__role {
+        font-size: 0.85rem;
+        font-family: var(--font-body);
+        letter-spacing: 0.1px;
+    }
+}

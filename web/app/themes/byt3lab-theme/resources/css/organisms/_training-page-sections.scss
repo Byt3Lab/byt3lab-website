@@ -1,0 +1,36 @@
+// src/scss/organisms/_training-page-sections.scss
+@use "../abstracts/breakpoints" as *;
+
+.o-training-metrics {
+    position: relative;
+
+    .m-project-card {
+        height: 100%;
+        border-radius: 8px;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        &:hover {
+            transform: translateY(-4px);
+        }
+    }
+}
+
+
+.o-training-description {
+    position: relative;
+}
+
+.o-training-organisation {
+    position: relative;
+}
+
+.o-training-roadmap {
+    position: relative;
+    @include respond-down('md') {
+        .border-start {
+            margin-left: 15px;
+        }
+        .position-relative [style*="left: -53px"] {
+            left: -31px !important;
+        }
+    }
+}

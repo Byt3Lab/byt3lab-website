@@ -1,0 +1,7 @@
+$font-main: 'Nasalization', sans-serif;
+$font-titles: 'Beyonders', sans-serif;
+
+:root {
+  --font-body: #{$font-main};
+  --font-headings: #{$font-titles};
+}

@@ -1,0 +1,22 @@
+// src/scss/atoms/_inputs.scss
+.a-input {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--color-white) !important;
+    font-family: var(--font-body);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:focus {
+        background-color: rgba(255, 255, 255, 0.06) !important;
+        border-color: var(--color-secondary) !important; // Focus Bleu principal (#20A3DB)
+        box-shadow: 0 0 0 0.25rem rgba(32, 163, 219, 0.15) !important;
+    }
+}
+
+// Style lors du focus sur les placeholders flottants de Bootstrap
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--color-secondary) !important;
+    opacity: 0.8;
+}

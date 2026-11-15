@@ -1,0 +1,61 @@
+// src/scss/molecules/_service-card.scss
+@use "../abstracts/breakpoints" as *;
+.m-service-card {
+    background-color: var(--color-white, #ffffff);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    border-radius: 4px; // Bordures très légèrement arrondies conformes au visuel
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); // Légère ombre initiale au repos
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+
+    &__icon {
+        color: var(--color-primary, #5468ff); // Bleu électrique de la marque pour l'atome icône
+        margin-bottom: var(--spacing-md);
+        transition: color 0.35s ease, transform 0.35s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-family: var(--font-title);
+        line-height: 2;
+        font-weight: 600;
+        color: var(--color-dark, #1a1a1a);
+        margin-bottom: var(--spacing-sm);
+        transition: color 0.35s ease;
+    }
+
+    &__text {
+        font-size: 0.95rem;
+        color: var(--color-gray, #777777);
+        line-height: 1.6;
+        font-family: var(--font-body);
+        transition: color 0.35s ease;
+    }
+
+        &:hover,
+        &.is-active {
+            background-color: var(--color-primary, #5468ff); // Le fond prend la couleur bleu vif
+            box-shadow: 0 15px 30px rgba(84, 104, 255, 0.25); // Ombre portée colorée immersive
+            transform: translateY(-5px); // Effet de surélévation mécanique
+
+        .m-service-card__icon {
+            color: var(--color-white, #ffffff); // L'icône devient blanche
+            transform: scale(1.05);
+        }
+
+        .m-service-card__title {
+            color: var(--color-white, #ffffff); // Le titre devient blanc
+        }
+
+        .m-service-card__text {
+            color: rgba(255, 255, 255, 0.85); // Le paragraphe passe en blanc translucide pour le contraste
+        }
+    }
+}

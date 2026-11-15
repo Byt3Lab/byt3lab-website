@@ -1,0 +1,43 @@
+// --- MOLECULE : NEWSLETTER FORM ---
+.m-newsletter-form {
+  &__group {
+    background-color: rgba(255, 255, 255, 0.05); 
+    border-radius: 30px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: border-color 0.25s ease;
+
+    &:focus-within {
+      border-color: var(--color-primary); 
+    }
+  }
+
+  &__input {
+    background: none;
+    border: none;
+    padding: 10px 14px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    outline: none;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &__btn {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: var(--color-secondary);
+    }
+  }
+}

@@ -1,0 +1,49 @@
+// src/scss/molecules/_work-card.scss
+.m-work-card {
+    height: 240px;
+    cursor: pointer;
+    position: relative;
+
+    &__img {
+        transition: transform 0.4s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__hover {
+        background-color: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 3;
+    }
+
+    &__box {
+        transform: scale(0.85);
+        opacity: 0;
+        transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border: 10px solid rgba(0, 0, 0, 0.04);
+        background-color: #ffffff !important;
+        color: #13171c !important;
+        
+        h3, .a-title--md {
+            color: #13171c !important;
+            display: block !important;
+            visibility: visible !important;
+        }
+    }
+
+    // Déclenchement du Hover
+    &:hover {
+        .m-work-card__img {
+            transform: scale(1.04);
+        }
+        .m-work-card__hover {
+            opacity: 1;
+        }
+        .m-work-card__box {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}

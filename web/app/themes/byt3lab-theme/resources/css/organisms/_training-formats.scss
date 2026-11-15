@@ -1,0 +1,17 @@
+// src/scss/organisms/_training-formats.scss
+.o-training-formats {
+    
+    .c-format-block {
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+        
+        &__badge {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        &:hover {
+            transform: translateY(-4px);
+            border-color: rgba(32, 163, 219, 0.2) !important;
+            background-color: #0d1013 !important;
+        }
+    }
+}

@@ -1,0 +1,116 @@
+// src/scss/base/_global.scss
+p {
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+/**
+* Fonts
+**/
+.font-body {
+    font-family: var(--font-body);
+}
+
+.font-title {
+    font-family: var(--font-title);
+}
+
+.font-size-2 {
+    font-size: 2rem;
+}
+/**
+* BGs
+**/
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary);
+}
+
+.bg-dark {
+    background-color: var(--color-dark);
+}
+
+.bg-white {
+    background-color: var(--color-white);
+}
+
+.bg-gray {
+    background-color: var(--color-gray);
+}
+
+.bg-gray-dark {
+    background-color: var(--color-gray-dark);
+}
+
+.bg-gray-light {
+    background-color: var(--color-gray-light);
+}
+
+.bg-bg-alt {
+    background-color: var(--color-bg-alt);
+}
+
+/**
+* Texts
+**/
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.text-dark {
+    color: var(--color-dark);
+}
+
+.text-white {
+    color: var(--color-white);
+}
+
+.text-gray {
+    color: var(--color-gray);
+}
+
+.text-gray-dark {
+    color: var(--color-gray-dark);
+}
+
+.text-primary-custom {
+    color: var(--color-primary);
+}
+
+.text-gray-light {
+    color: var(--color-gray-light);
+}
+
+.text-bg-alt {
+    color: var(--color-bg-alt);
+}
+
+/**
+* Borders
+**/
+.border-primary {
+    border-color: var(--color-primary);
+}
+
+.border-secondary {
+    border-color: var(--color-secondary);
+}
+
+.border-dark {
+    border-color: var(--color-dark);
+}
+
+.border-white {
+    border-color: var(--color-white);
+}
+
+.border-gray {
+    border-color: var(--color-gray);
+}

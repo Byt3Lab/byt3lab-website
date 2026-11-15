@@ -1,0 +1,71 @@
+// src/scss/organisms/_works.scss
+.c-works {
+    background-color: var(--color-dark);
+
+    .text-turquoise {
+        color: var(--color-primary);
+    }
+
+    .mix-portfolio {
+        transform: scale(1);
+        opacity: 1;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        
+        &.is-hidden {
+            display: none !important;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        
+        &.is-visible {
+            display: block !important;
+            animation: fadeInCard 0.4s ease forwards;
+        }
+    }
+
+    &--light {
+        background-color: var(--color-white, #FFFFFF);
+        color: var(--color-dark, #050607);
+
+        .a-title {
+            color: var(--color-dark);
+        }
+
+        .a-works-line {
+            background-color: rgba(5, 6, 7, 0.08);
+        }
+
+        .a-button--filter {
+            background-color: var(--color-gray-light, #f8f9fa);
+            border: 1px solid rgba(5, 6, 7, 0.08);
+            color: rgba(5, 6, 7, 0.65);
+
+            &:hover, &.active {
+                background-color: var(--color-secondary, #20a3db);
+                border-color: var(--color-secondary, #20a3db);
+                color: var(--color-white) !important;
+                box-shadow: 0 4px 12px rgba(32, 163, 219, 0.2);
+            }
+        }
+
+        .m-work-card {
+            box-shadow: 0 10px 30px rgba(5, 6, 7, 0.04);
+            
+            &__hover {
+                background-color: rgba(255, 255, 255, 0.75);
+            }
+
+            &__box {
+                background-color: var(--color-white) !important;
+                border: 1px solid rgba(5, 6, 7, 0.06);
+                box-shadow: 0 8px 24px rgba(5, 6, 7, 0.08);
+            }
+        }
+    }
+}
+
+// Micro-animation de fondu à l'apparition lors du filtrage
+@keyframes fadeInCard {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

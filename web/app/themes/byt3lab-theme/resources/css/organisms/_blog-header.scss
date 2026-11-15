@@ -1,0 +1,38 @@
+// src/scss/organisms/_blog-hero.scss
+@use "../abstracts/breakpoints" as *;
+.o-blog-hero {
+    background-color: var(--color-dark, #050607);
+    overflow: hidden;
+    position: relative;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include respond-up('lg') {
+        p {
+            text-align: justify;
+        }
+    }
+
+    .max-width-600 {
+        max-width: 600px;
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        background-color: rgba(5, 6, 7, 0.85);
+        z-index: 0;
+    }
+
+    &__container {
+        position: relative;
+        z-index: 1;
+    }
+}

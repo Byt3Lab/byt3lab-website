@@ -1,0 +1,30 @@
+// src/scss/abstracts/_breakpoints.scss
+$breakpoints: (
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px,
+    'xxl': 1400px
+);
+
+@mixin respond-down($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $value: map-get($breakpoints, $breakpoint);
+        @media (max-width: ($value - 0.02px)) {
+            @content;
+        }
+    } @else {
+        @error "La valeur '#{$breakpoint}' n'existe pas dans la map $breakpoints.";
+    }
+}
+
+@mixin respond-up($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $value: map-get($breakpoints, $breakpoint);
+        @media (min-width: $value) {
+            @content;
+        }
+    } @else {
+        @error "La valeur '#{$breakpoint}' n'existe pas dans la map $breakpoints.";
+    }
+}

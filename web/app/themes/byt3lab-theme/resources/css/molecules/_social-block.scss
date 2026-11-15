@@ -1,0 +1,19 @@
+// src/scss/molecules/_social-block.scss
+.m-social-block {
+  margin-top: var(--spacing-md);
+
+  &__title {
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: var(--font-title);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: 0.5px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+}

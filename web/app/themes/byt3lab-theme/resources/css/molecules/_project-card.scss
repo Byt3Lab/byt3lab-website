@@ -1,0 +1,365 @@
+// src/scss/molecules/_project-card.scss
+.m-project-card {
+    background-color: #0b0d10;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &__header {
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(5,6,7,0.2) 0%, rgba(5,6,7,0.6) 100%);
+            z-index: 1;
+        }
+    }
+
+    &__img {
+        display: block;
+        height: 100%;
+        transition: transform 0.5s ease;
+    }
+
+    &__title {
+        font-size: 1rem;
+        line-height: 2;
+        font-family: var(--font-title);
+        letter-spacing: 0.5px;
+        a {
+            font-size: 1rem;
+            font-family: var(--font-title);
+            transition: color 0.25s ease;
+            &:hover {
+                color: var(--color-primary, #3CAE62) !important;
+            }
+        }
+    }
+
+    &__text {
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: justify;
+        color: var(--color-gray, #666666);
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(60, 174, 98, 0.1);
+
+        .m-project-card__img {
+            transform: scale(1.05);
+        }
+    }
+
+    &--service {
+        background-color: #0b0d10; // Conserve le relief de votre carte
+        box-shadow: none;
+        
+        .m-project-card__service-icon {
+            width: 55px;
+            height: 55px;
+            background-color: rgba(32, 163, 219, 0.08); // Léger fond bleu transparent
+            border: 1px solid rgba(32, 163, 219, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--color-secondary, #20A3DB); // Icône bleu principal informatique
+            transition: all 0.3s ease;
+        }
+
+        // On réécrit le comportement Hover pour l'aligner sur l'ambiance technologique et informative (Bleu)
+        &:hover {
+            transform: translateY(-6px);
+            border-color: rgba(32, 163, 219, 0.2);
+            box-shadow: 0 15px 35px rgba(32, 163, 219, 0.15); // Halo Bleu Principal BYT3LAB sur les services
+
+            .m-project-card__service-icon {
+                background-color: var(--color-secondary, #20A3DB);
+                color: var(--color-white, #FFFFFF);
+                box-shadow: 0 4px 15px rgba(32, 163, 219, 0.4);
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    &--pricing {
+        background-color: #0b0d10;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
+
+        .pricing-badge {
+            font-size: 0.75rem;
+            font-family: var(--font-body);
+            letter-spacing: 1px;
+            color: var(--color-secondary, #20A3DB);
+            background: rgba(32, 163, 219, 0.1);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        .pricing-price {
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+            
+            .currency {
+                font-size: 0.9rem;
+                color: var(--color-primary, #3CAE62);
+                vertical-align: super;
+            }
+            .period {
+                font-size: 1rem;
+                font-family: var(--font-body);
+                color: rgba(255, 255, 255, 0.5);
+                text-transform: none;
+                letter-spacing: 0;
+            }
+        }
+
+        .pricing-features {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            
+            li {
+                color: var(--color-white);
+                display: flex;
+                align-items: flex-start;
+                line-height: 1.5;
+            }
+        }
+
+        &:hover {
+            transform: translateY(-6px);
+            border-color: rgba(32, 163, 219, 0.2);
+            box-shadow: 0 15px 35px rgba(32, 163, 219, 0.1);
+        }
+
+        &-featured {
+            border: 2px solid var(--color-primary, #3CAE62);
+            background-color: #0e1216;
+            
+            .pricing-badge--featured {
+                color: #FFFFFF;
+                background: var(--color-primary, #3CAE62);
+            }
+
+            &:hover {
+                box-shadow: 0 15px 35px rgba(60, 174, 98, 0.2);
+                border-color: var(--color-primary, #3CAE62);
+            }
+        }
+    }
+
+    &--gallery {
+        position: relative;
+        height: 100%;
+        min-height: 240px;
+        border-color: var(--color-white, #ffffff);
+        cursor: pointer;
+
+        .m-project-card__img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(5, 6, 7, 0) 50%, rgba(5, 6, 7, 0.85) 100%);
+            z-index: 1;
+            transition: background 0.3s ease;
+        }
+
+        .m-project-card__caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--spacing-md, 1.25rem);
+            z-index: 2;
+        }
+
+        .m-project-card__tag {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-white, #ffffff);
+            letter-spacing: 0.5px;
+            border-left: 3px solid var(--color-primary, #3CAE62);
+            padding-left: var(--spacing-xs, 0.5rem);
+        }
+
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(32, 163, 219, 0.15);
+
+            .m-project-card__img {
+                transform: scale(1.04);
+            }
+
+            &::after {
+                background: linear-gradient(180deg, rgba(5, 6, 7, 0) 30%, rgba(5, 6, 7, 0.95) 100%);
+            }
+        }
+    }
+
+    &--category {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 280px;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background-color: var(--color-primary);
+            transition: height 0.3s ease;
+        }
+
+        .m-project-card__icon-wrapper {
+            transition: transform 0.3s ease;
+            i { display: inline-block; }
+        }
+
+        &:hover {
+            &::before {
+                height: 100%; // Ligne de focus verte futuriste au survol
+            }
+
+            .m-project-card__icon-wrapper {
+                transform: translateY(-4px) scale(1.05);
+            }
+        }
+    }
+
+    &--course {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        
+        .m-project-card__header {
+            overflow: hidden;
+        }
+
+        .m-project-card__badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 3;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 4px;
+            color: var(--color-white, #ffffff);
+        }
+
+        .m-project-card__bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                font-family: var(--font-body);
+                font-size: 0.88rem;
+                color: var(--color-white);
+                opacity: 0.65;
+                display: flex;
+                align-items: flex-start;
+                gap: 0.5rem;
+                margin-bottom: 0.6rem;
+                line-height: 1.4;
+
+                i {
+                    color: var(--color-primary);
+                    font-size: 1rem;
+                    margin-top: 2px;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        &:hover {
+            box-shadow: 0 15px 35px rgba(32, 163, 219, 0.15);
+            
+            .m-project-card__bullets li {
+                opacity: 0.9;
+            }
+        }
+
+        &.m-project-card--light {
+            background-color: var(--color-white, #ffffff);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+
+            .m-project-card__bullets {
+                li {
+                    color: #4a5568;
+                    opacity: 0.8;
+
+                    i {
+                        color: var(--color-secondary, #20A3DB);
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: var(--color-white, #ffffff);
+                border-color: rgba(32, 163, 219, 0.3);
+                box-shadow: 0 12px 30px rgba(32, 163, 219, 0.1);
+
+                .m-project-card__bullets li {
+                    opacity: 1;
+                    color: #1a202c;
+                }
+            }
+        }
+    }
+
+    &--metric {
+        padding: var(--spacing-lg, 1.5rem);
+        text-align: center;
+
+        .m-project-card__icon {
+            font-size: 2rem; 
+            margin-bottom: var(--spacing-sm, 0.5rem);
+            display: inline-block;
+        }
+
+        .m-project-card__value {
+            font-family: var(--font-body);
+            font-size: 1.5rem;
+            margin: var(--spacing-xs, 0.25rem) 0 0 0;
+        }
+
+        .m-project-card__subtext {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            display: block;
+            margin-top: var(--spacing-xs, 0.25rem);
+        }
+    }
+}

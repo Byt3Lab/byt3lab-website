@@ -1,0 +1,67 @@
+// src/scss/organisms/_blog-catalog.scss
+.o-blog-catalog {
+    background-color: var(--color-dark, #050607);
+
+    .a-title-section {
+        font-size : 1.2rem;
+    }
+
+    .max-width-1000 {
+        max-width: 1000px;
+    }
+
+    &__filters {
+        .a-button--filter {
+            &.active {
+                border-color: var(--color-primary, #3CAE62);
+                color: var(--color-white, #FFFFFF);
+                background-color: var(--color-primary, #3CAE62);
+                box-shadow: 0 4px 12px rgba(60, 174, 98, 0.3);
+            }
+        }
+    }
+
+    .m-project-card {
+
+        span {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+        }
+
+        &__header {
+            height: 220px; 
+        }
+
+        .badge {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            opacity: 0.85;
+            transition: all 0.25s ease;
+
+            &:hover {
+                opacity: 1;
+                background-color: rgba(60, 174, 98, 0.08) !important;
+            }
+        }
+    }
+
+    #blog-load-more {
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: var(--color-secondary, #20A3DB);
+        }
+    }
+}
+
+.mix-blog-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    
+    &.is-hidden {
+        display: none !important;
+    }
+    &.is-visible {
+        display: block !important;
+    }
+}

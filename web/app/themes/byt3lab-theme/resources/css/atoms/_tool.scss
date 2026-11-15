@@ -1,0 +1,16 @@
+
+// src/scss/atoms/_tool-icon.scss
+// Atome : Icône de l'outil
+.a-tool-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+// Atome : Label texte de l'outil
+.a-tool-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}

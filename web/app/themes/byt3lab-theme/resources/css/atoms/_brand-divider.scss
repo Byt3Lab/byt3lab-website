@@ -1,0 +1,7 @@
+// src/scss/atoms/_brand-divider.scss
+.a-brand-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary, #3CAE62) 0%, var(--color-secondary, #20A3DB) 100%);
+    border-radius: 2px;
+}

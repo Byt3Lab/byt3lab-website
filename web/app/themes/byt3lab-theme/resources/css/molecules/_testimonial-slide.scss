@@ -1,0 +1,73 @@
+// src/scss/molecules/_testimonial-slide.scss
+@use "../abstracts/breakpoints" as *;
+.m-testimonial-slide {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    &.is-active {
+        display: flex;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    &__avatar {
+        margin-bottom: var(--spacing-md);
+    }
+
+    &__blockquote {
+        position: relative;
+        font-size: 1rem;
+        font-family: var(--font-body);
+        line-height: 2;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0 0 var(--spacing-lg) 0;
+        padding: 0 var(--spacing-lg);
+
+        @include respond-down('md') {
+        font-size: 1rem;
+        padding: 0;
+        }
+    }
+
+    &__quote-mark {
+        color: var(--color-primary);
+        font-size: 1.5rem;
+        font-family: var(--font-body);
+        font-weight: bold;
+        line-height: 0;
+        vertical-align: middle;
+
+        &--start {
+        margin-right: 4px;
+        }
+
+        &--end {
+        margin-left: 4px;
+        }
+    }
+
+    &__author {
+        margin-top: var(--spacing-xs);
+    }
+
+    &__name {
+        font-size: 1rem;
+        font-family: var(--font-title);
+        line-height: 2;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--color-white, #ffffff);
+        margin-bottom: 2px;
+    }
+
+    &__role {
+        font-size: 1rem;
+        font-family: var(--font-body);
+        color: rgba(255, 255, 255, 0.55);
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+}

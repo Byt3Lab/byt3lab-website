@@ -1,0 +1,26 @@
+// --- MOLECULE : PAGINATION LINEAIRE (LES LIGNES DU BAS) ---
+.m-carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--spacing-lg);
+
+  &__dot {
+    background-color: rgba(255, 255, 255, 0.25);
+    border: none;
+    width: 28px;  // Format rectangulaire étiré comme sur le visuel
+    height: 4px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    &.is-active {
+      background-color: var(--color-white, #ffffff);
+      transform: scaleX(1.1);
+    }
+  }
+}

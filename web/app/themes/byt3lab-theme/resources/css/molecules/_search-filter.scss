@@ -1,0 +1,30 @@
+// src/scss/molecules/_search-filter.scss
+.m-search-filter {
+    .form-control {
+        transition: all 0.3s ease;
+        
+        &:focus {
+            background-color: rgba(5, 6, 7, 0.8) !important;
+            border-color: var(--color-secondary) !important;
+            box-shadow: 0 0 15px rgba(32, 163, 219, 0.25);
+            color: var(--color-white) !important;
+        }
+
+        &::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    .a-button--filter {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-radius: 6px;
+        
+        &.active {
+            background-color: var(--color-primary) !important;
+            border-color: var(--color-primary) !important;
+            color: var(--color-white) !important;
+        }
+    }
+}

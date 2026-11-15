@@ -1,0 +1,8 @@
+// scr/scss/organisms/_courses-catalog.scss
+.o-courses-catalog {
+    position: relative;
+    
+    &.bg-light {
+        background-color: #f8f9fa !important; // Ton gris de structure clair
+    }
+}

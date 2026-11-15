@@ -1,0 +1,43 @@
+// src/scss/atoms/_link.scss
+.a-link {
+    font-family: var(--font-body);
+    color: var(--color-dark);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--color-primary);
+    }
+
+    &.is-active {
+        color: var(--color-primary);
+    }
+
+    &--logo {
+        font-family: var(--font-title);
+        font-size: 0.8rem;
+        text-transform: none;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    &--project {
+        color: var(--color-primary, #3CAE62); // Vert dominant
+        font-size: 1rem;
+        font-weight: 600;
+
+        svg {
+            transition: transform 0.3s ease;
+        }
+
+        &:hover {
+            color: var(--color-secondary, #20A3DB); // Passage au bleu
+            
+            svg {
+            transform: translate(2px, -2px); // Animation futuriste subtile
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+// src/scss/organisms/_article-content.scss
+.o-article-content {
+    background-color: var(--color-white);
+
+    .content-wysiwyg {
+        font-size: 1.1rem;
+        color: var(--color-gray-dark, #333333);
+        
+        h2, h3, h4 {
+            font-family: var(--font-body);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            line-height: 2.5;
+        }
+
+        blockquote {
+            background-color: var(--color-gray-light, #f8f9fa);
+            border-left: 4px solid var(--color-primary) !important;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+
+        strong {
+            color: var(--color-dark, #050607);
+        }
+    }
+}

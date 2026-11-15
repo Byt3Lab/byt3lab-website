@@ -1,0 +1,33 @@
+// src/scss/molecules/_tool-card.scss
+.m-tool-card {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    
+    &__icon-wrapper {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(5, 6, 7, 0.5);
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.02);
+        transition: border-color 0.3s ease;
+    }
+    
+    &:hover {
+        transform: translateY(-5px);
+        background-color: rgba(32, 163, 219, 0.02);
+        border-color: rgba(32, 163, 219, 0.25);
+        box-shadow: 0 10px 25px rgba(32, 163, 219, 0.08);
+        .a-tool-icon {
+            transform: scale(1.1) rotate(3deg);
+        }
+        .a-tool-name {
+            color: var(--color-secondary, #20A3DB) !important;
+        }
+        .m-tool-card__icon-wrapper {
+            border-color: rgba(32, 163, 219, 0.2);
+        }
+    }
+}

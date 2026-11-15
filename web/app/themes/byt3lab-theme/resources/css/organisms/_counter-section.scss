@@ -1,0 +1,19 @@
+// src/scss/organisms/_counter-section.scss
+.o-counter-section {
+    min-height: 280px;
+    background-color: var(--color-dark, #050607);
+
+    &__bg {
+        z-index: 1;
+        filter: brightness(0.25) contrast(1.1);
+    }
+
+    &__overlay {
+        z-index: 2;
+        background: rgba(5, 6, 7, 0.4);
+    }
+
+    .content-layer {
+        z-index: 3;
+    }
+}

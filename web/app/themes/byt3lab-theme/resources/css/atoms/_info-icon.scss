@@ -1,0 +1,9 @@
+// src/scss/atoms/_info-icon.scss
+.a-info-icon {
+    width: 38px;
+    height: 38px;
+    background-color: rgba(60, 174, 98, 0.1); // Teinte légère verte
+    color: var(--color-primary);
+    border-radius: 50%;
+    font-size: 1rem;
+}

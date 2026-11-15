@@ -1,0 +1,89 @@
+// src/scss/organisms/_contact-section.scss
+/*.o-contact-section {
+    background-color: var(--color-dark);
+    
+    .m-contact-form {
+        background-color: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+}*/
+
+// src/scss/organisms/_contact-section.scss
+.o-contact-section {
+    background-color: var(--color-dark, #050607);
+    color: var(--color-white, #FFFFFF);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    .a-section-subtitle {
+        opacity: 0.75;
+    }
+
+    .m-contact-form {
+        background-color: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .a-textarea {
+        height: 150px;
+    }
+
+    .form-control.a-input {
+        background-color: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--color-white);
+
+        &:focus {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--color-primary);
+            box-shadow: 0 0 8px rgba(60, 174, 98, 0.25);
+            color: var(--color-white);
+        }
+    }
+
+    .form-floating > .a-label {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    &--light {
+        background-color: var(--color-white, #FFFFFF);
+        color: var(--color-dark, #050607);
+
+        .a-title {
+            color: var(--color-dark) !important;
+        }
+
+        .a-section-subtitle, .a-details-text {
+            color: var(--color-dark);
+            opacity: 0.7;
+        }
+
+        .m-contact-form {
+            background-color: var(--color-gray-dark, #f8f9fa);
+            border: 1px solid rgba(5, 6, 7, 0.05);
+            box-shadow: 0 10px 30px rgba(5, 6, 7, 0.05);
+        }
+
+        .form-control.a-input {
+            background-color: var(--color-white);
+            border: 1px solid rgba(5, 6, 7, 0.15);
+            color: var(--color-dark);
+
+            &:focus {
+                background-color: var(--color-white);
+                border-color: var(--color-secondary);
+                box-shadow: 0 0 8px rgba(32, 163, 219, 0.2);
+                color: var(--color-dark);
+            }
+        }
+
+        .form-floating > .a-label {
+            color: rgba(5, 6, 7, 0.6);
+        }
+
+        .a-info-icon {
+            color: var(--color-secondary);
+        }
+    }
+}
