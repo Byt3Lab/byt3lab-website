@@ -19,6 +19,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/var/www/html
+      - ./docker/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
     depends_on:
       - db
     restart: unless-stopped
@@ -43,6 +44,13 @@ services:
     depends_on:
       - php
     restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: bedrock_redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
 
 volumes:
   db_data:

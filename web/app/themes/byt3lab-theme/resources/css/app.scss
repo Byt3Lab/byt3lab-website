@@ -4,8 +4,8 @@
 // ==========================================================================
 
 // Intégration Remix Icon avec @use
-//$ri-font-path: "/src/assets/fonts";
-//@use "remixicon/fonts/remixicon.css";
+$ri-font-path: "/src/assets/fonts";
+@use "remixicon/fonts/remixicon.css";
 
 // Intégration de Bootstrap via le système de modules de Sass
 // On charge d'abord vos variables personnalisées en les injectant (with) dans Bootstrap

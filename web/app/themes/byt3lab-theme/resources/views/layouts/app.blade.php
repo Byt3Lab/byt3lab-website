@@ -10,7 +10,11 @@
   <body @php(body_class())>
     @php(wp_body_open())
     <div id="app">
-      @yield('content')
+      @include('sections.header')
+      <main class="main">
+        @yield('content')
+      </main>
+      @include('sections.footer')
     </div>
     @php(do_action('get_footer'))
     @php(wp_footer())

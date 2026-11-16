@@ -84,7 +84,8 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage'),
+        'primary' => __('Menu principal', 'byt3lab-theme'),
+        'footer'  => __('Menu pied de page (Nos Services)', 'byt3lab-theme'),
     ]);
 
     /**

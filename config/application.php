@@ -194,3 +194,10 @@ Config::apply();
 if (!defined('ABSPATH')) {
     define('ABSPATH', $webroot_dir . '/wp/');
 }
+
+
+/**
+ * Redis Configuration
+ */
+Config::define('WP_REDIS_HOST', 'redis');
+Config::define('WP_REDIS_PORT', 6379);
